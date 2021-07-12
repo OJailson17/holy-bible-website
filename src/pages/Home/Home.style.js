@@ -9,9 +9,9 @@ export const MainContainer = styled.div`
   row-gap: 15px;
   align-items: center;
   justify-content: center;
-  margin: 116px 0 50px 0;
+  margin: 0 0 50px 0;
 
-  @media ${({ theme }) => theme.queries.large} {
+  @media ${({ theme }) => theme.queries.big} {
     grid-template-columns: repeat(3, 1fr);
   }
 `;
@@ -36,11 +36,11 @@ export const TopicWrapper = styled.a`
     margin-top: 5px;
   }
 
-  @media ${({ theme }) => theme.queries.small} {
+  @media ${({ theme }) => theme.queries.xsmall} {
     font-size: 14px;
   }
 
-  @media ${({ theme }) => theme.queries.large} {
+  @media ${({ theme }) => theme.queries.big} {
     flex-direction: row;
 
     span {
@@ -70,7 +70,7 @@ export const FooterText = styled.p`
     text-decoration: underline;
   }
 
-  @media ${({ theme }) => theme.queries.small} {
+  @media ${({ theme }) => theme.queries.xsmall} {
     font-size: 14px;
   }
 

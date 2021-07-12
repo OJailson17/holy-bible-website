@@ -6,8 +6,9 @@ text-align: center;
 font-size: 25px;
 margin: 0 auto;
 margin-top: 30px;
+margin-bottom: 116px;
 
-@media ${({ theme }) => theme.queries.small} {
+@media ${({ theme }) => theme.queries.xsmall} {
     font-size: 25px;
   }
 `

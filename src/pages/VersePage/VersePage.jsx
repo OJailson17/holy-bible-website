@@ -1,7 +1,7 @@
 import { PageTitle } from "../../components/Title/PageTitle";
 import { Verse } from "../../components/Verse/Verse";
 import { BtnContainer, PageWrapper } from "./VersePage.style";
-import { Navigation } from "../../components/Navigation/Navigation";
+import { NumberNavigation } from "../../components/Navigation/NumberNavigation";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
 
 export function VersePage() {
@@ -28,7 +28,7 @@ export function VersePage() {
       <main>
         <PageWrapper>
           <Verse data={verse} versePage={true} />
-          <Navigation title="Versiculos" numbers={verse.chapter.verses} />
+          <NumberNavigation title="Versiculos" numbers={verse.chapter.verses} />
         </PageWrapper>
         <BtnContainer>
           <ExtraBtn>Adicionar aos favoritos</ExtraBtn>

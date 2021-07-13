@@ -1,38 +1,45 @@
-import React from "react";
-import styled from "styled-components";
-import useWindowDimensions from "../../middlewares/windowViewport";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import useWindowDimensions from '../../middlewares/windowViewport'
 
-const NavContainer = styled.div`
-  width: 400px;
-  & > div {
-    width: 400px;
-    height: 50px;
-    margin-top: 24px;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-`;
+const LinkList = styled.ul`
+width: 20%;
+font-size: 18px;
+line-height: 1.8;
+    li a {
+        color: black;
 
-const Number = styled.a`
-  color: blue;
-  font-size: 18px;
-  line-height: 2;
-  margin: 2px;
-`;
+        &:hover {
+            color: blue;
+            text-decoration: underline;
+        }
+    }
+`
 
-export function Navigation({ title, numbers }) {
-  const { width } = useWindowDimensions();
+export function Navigation() {
+    const {width} = useWindowDimensions()
 
-  return (
-    <NavContainer hidden={width < 1024 ? "hidden" : ""}>
-      <h3>{title}</h3>
-      <div className="numbers">
-        {[...Array(numbers)]?.map((ArrayElement, index) => (
-          <Number key={index}>{index + 1}</Number>
-        ))}
-      </div>
-    </NavContainer>
-  );
+    return (
+        <>
+        <LinkList hidden={width < 1024 ? "hidden" : ""}>
+            <li>
+                <Link to="/">Temas</Link>
+            </li>
+            <li>
+                <Link to="/">Bíblia completa</Link>
+            </li>
+            <li>
+                <Link to="/">Velho Testamento</Link>
+            </li>
+            <li>
+                <Link to="/">Novo Testamento</Link>
+            </li>
+            <li>
+                <Link to="/">Versículos Favoritos</Link>
+            </li>
+        </LinkList>
+        </>
+    )
 }
+

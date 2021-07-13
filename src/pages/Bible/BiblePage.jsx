@@ -4,7 +4,7 @@ import {
   SelectChapter,
 } from "../../components/SelectInput/SelectInputs";
 import { PageTitle } from "../../components/Title/PageTitle";
-import { Navigation } from "../../components/Navigation/Navigation";
+import { NumberNavigation } from "../../components/Navigation/NumberNavigation";
 import {
   ChangePageBtn,
   ChangePageContainer,
@@ -105,7 +105,7 @@ export function BiblePage() {
             <SelectBook />
             <SelectChapter />
           </div>
-          <Navigation title="Capítulos" numbers={50} />
+          <NumberNavigation title="Capítulos" numbers={50} />
         </PageContainer>
 
         <Verse data={data} />

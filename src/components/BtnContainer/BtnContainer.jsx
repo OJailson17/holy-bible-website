@@ -3,6 +3,7 @@ import styled from "styled-components";
 const BtnWrapper = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: ${({primary}) => primary ? "column" : ""};
   justify-content: space-between;
 
   @media ${({ theme }) => theme.queries.medium} {
@@ -27,6 +28,6 @@ const BtnWrapper = styled.div`
   }
 `;
 
-export function BtnContainer({children}) {
-    return <BtnWrapper>{children}</BtnWrapper>
+export function BtnContainer({children, primary}) {
+    return <BtnWrapper primary={primary}>{children}</BtnWrapper>
 }

@@ -40,7 +40,7 @@ export function Navigation({ primary }) {
           <Link to="/bible">Bíblia completa</Link>
         </li>
         <li>
-          <Link to="/">Velho Testamento</Link>
+          <Link to="/oldtestament">Velho Testamento</Link>
         </li>
         <li>
           <Link to="/newtestament">Novo Testamento</Link>

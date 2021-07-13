@@ -1,7 +1,8 @@
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { BiblePage } from './pages/Bible/BiblePage';
 import { Home } from "./pages/Home/Home";
-import { NewTestament } from './pages/New Testament/NewTestament';
+import { NewTestament } from './pages/NewTestament/NewTestament';
+import { OldTestament } from './pages/OldTestament/OldTestament';
 import { Topics } from './pages/Topics/Topics';
 import { VersePage } from './pages/VersePage/VersePage';
 import { WordOfDay } from './pages/WordOfDay/WordOfDay';
@@ -17,6 +18,7 @@ function App() {
     <Route exact path="/wordofday" component={WordOfDay} />
     <Route exact path="/topics" component={Topics} />
     <Route exact path="/newtestament" component={NewTestament} />
+    <Route exact path="/oldtestament" component={OldTestament} />
     </Switch>
     </div>
     </Router>

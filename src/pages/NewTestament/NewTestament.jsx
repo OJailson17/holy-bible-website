@@ -15,7 +15,7 @@ export function NewTestament() {
       </Subtitle>
 
       <PageWrapper>
-      <BtnContainer>
+      <BtnContainer primary>
           <Buttons>Gênesis</Buttons>
           <Buttons>Êxodo</Buttons>
           <Buttons>Salmos</Buttons>

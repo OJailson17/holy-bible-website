@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const Header = styled.header`
-  @media ${({ theme }) => theme.queries.exception} {
-    .hidden {
-      display: none;
-    }
-  }
-`;
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -46,7 +39,7 @@ margin-bottom: 30px;
     }
 
  @media ${({ theme }) => theme.queries.large} {
-     width: 60%;
+     width: 50%;
     }
 
  @media ${({ theme }) => theme.queries.xlarge} {
@@ -64,4 +57,12 @@ border-radius: 5px;
 color: black;
 outline: none;
 cursor: pointer;
+transition: .3s;
+
+&:hover {
+  background: black;
+  color: white;
+
+
+}
 `

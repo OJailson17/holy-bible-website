@@ -8,15 +8,15 @@ const SelectInput = styled(Select)`
 
   @media ${({ theme }) => theme.queries.medium} {
     width: 332px;
-    }
+  }
 `;
 
 const Form = styled(FormControl)`
-@media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 1024px) {
     .hidden {
-    display: none;
+      display: none;
+    }
   }
-}
 `;
 
 export function SelectBook() {
@@ -39,16 +39,13 @@ export function SelectBook() {
   );
 }
 
-export function SelectChapter() {
+export function SelectChapter({ verse }) {
   const myArr = [1, 2, 3, 4, 5];
 
   return (
     <>
-      <Form variant="outlined">
-        <InputLabel
-          id="chapter-label"
-          className="hidden"
-        >
+      <Form variant="outlined" verse={verse}>
+        <InputLabel id="chapter-label" className="hidden">
           Escolher capítulo
         </InputLabel>
         <SelectInput

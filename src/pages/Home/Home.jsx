@@ -13,7 +13,7 @@ export function Home() {
   return (
     <>
     <header>
-      <PageTitle />
+      <PageTitle home />
     </header>
 
     <main>

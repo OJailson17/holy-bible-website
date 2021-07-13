@@ -14,6 +14,14 @@ export const MainContainer = styled.div`
   @media ${({ theme }) => theme.queries.big} {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  @media ${({ theme }) => theme.queries.large} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media ${({ theme }) => theme.queries.xlarge} {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 // Topic Container
@@ -40,7 +48,7 @@ export const TopicWrapper = styled.a`
     font-size: 14px;
   }
 
-  @media ${({ theme }) => theme.queries.big} {
+  @media ${({ theme }) => theme.queries.big } {
     flex-direction: row;
 
     span {

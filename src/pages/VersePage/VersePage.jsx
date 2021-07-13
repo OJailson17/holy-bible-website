@@ -1,8 +1,9 @@
 import { PageTitle } from "../../components/Title/PageTitle";
 import { Verse } from "../../components/Verse/Verse";
-import { BtnContainer, PageWrapper } from "./VersePage.style";
+import { BtnContainer } from "./VersePage.style";
 import { NumberNavigation } from "../../components/Navigation/NumberNavigation";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
+import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 
 export function VersePage() {
   const verse = {

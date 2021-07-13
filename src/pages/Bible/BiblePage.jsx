@@ -11,6 +11,8 @@ import {
   PageContainer,
 } from "./BiblePage.style";
 import { Verse } from "../../components/Verse/Verse";
+import { Navigation } from "../../components/Navigation/Navigation";
+import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 
 export function BiblePage() {
   const data = {
@@ -105,10 +107,16 @@ export function BiblePage() {
             <SelectBook />
             <SelectChapter />
           </div>
+          <div>
           <NumberNavigation title="Capítulos" numbers={50} />
+          </div>
         </PageContainer>
-
+        
+        <PageWrapper>
         <Verse data={data} />
+        <Navigation primary />
+        </PageWrapper>
+
         <ChangePageContainer>
           <ChangePageBtn>Anterior</ChangePageBtn>
           <ChangePageBtn>Próximo</ChangePageBtn>

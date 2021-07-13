@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
 import { Navigation } from "../../components/Navigation/Navigation";
+import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { PageTitle } from "../../components/Title/PageTitle";
 import { Verse } from "../../components/Verse/Verse";
-import { BtnContainer, PageWrapper } from "../VersePage/VersePage.style";
+import { BtnContainer } from "../VersePage/VersePage.style";
 
 const SubtitleContainer = styled.div`
 width: 100%;

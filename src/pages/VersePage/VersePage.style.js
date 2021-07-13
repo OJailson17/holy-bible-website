@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const PageWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 32px;
-  margin-bottom: 60px;
-`;
+// export const PageWrapper = styled.div`
+//   width: 100%;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   margin-top: 32px;
+//   margin-bottom: 60px;
+// `;
 
 export const BtnContainer = styled.div`
   width: 100%;

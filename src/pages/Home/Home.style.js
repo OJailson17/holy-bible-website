@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 // Main Container
 export const MainContainer = styled.div`
@@ -25,7 +25,7 @@ export const MainContainer = styled.div`
 `;
 
 // Topic Container
-export const TopicWrapper = styled.a`
+export const TopicWrapper = styled(Link)`
   width: 90%;
   max-width: 350px;
   height: 120px;

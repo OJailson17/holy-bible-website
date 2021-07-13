@@ -6,6 +6,7 @@ import { Subtitle } from "../../components/Subtitle/Subtitle";
 import { PageTitle } from "../../components/Title/PageTitle";
 
 export function NewTestament() {
+  const novoTestamento = ["Mateus", "Marcos", "Lucas", "João", "Atos", "Romanos", "1 Coríntios", "2 Coríntios", "Gálatas"]
   return (
     <>
       <PageTitle />
@@ -15,18 +16,13 @@ export function NewTestament() {
       </Subtitle>
 
       <PageWrapper>
-      <BtnContainer primary>
-          <Buttons>Gênesis</Buttons>
-          <Buttons>Êxodo</Buttons>
-          <Buttons>Salmos</Buttons>
-          <Buttons>Matheus</Buttons>
-          <Buttons>Apocalipse</Buttons>
-          <Buttons>Provérbios</Buttons>
-          <Buttons>João</Buttons>
-          <Buttons>Pedro</Buttons>
-      </BtnContainer>
-      <Navigation />
+        <BtnContainer primary>
+        {novoTestamento.map(livro => (
+          <Buttons>{livro}</Buttons>
+        ))}
+        </BtnContainer>
+        <Navigation />
       </PageWrapper>
     </>
-  )
+  );
 }

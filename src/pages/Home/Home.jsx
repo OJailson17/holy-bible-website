@@ -18,32 +18,32 @@ export function Home() {
 
     <main>
       <MainContainer>
-        <TopicWrapper>
+        <TopicWrapper to="/bible">
           <i className="fas fa-bible"></i>
           <span>A Bíblia</span>
         </TopicWrapper>
 
-        <TopicWrapper>
+        <TopicWrapper to="/wordofday">
           <i className="far fa-comment"></i>
           <span>Palavra do dia</span>
         </TopicWrapper>
 
-        <TopicWrapper>
+        <TopicWrapper to="/">
           <i className="fas fa-star"></i>
           <span>Versículos Favoritos</span>
         </TopicWrapper>
 
-        <TopicWrapper>
+        <TopicWrapper to="/topics">
           <i className="far fa-list-alt"></i>
           <span>Temas</span>
         </TopicWrapper>
 
-        <TopicWrapper>
+        <TopicWrapper to="/oldtestament">
           <IconImage src={commandments} alt="commandments icon" />
           <span>Velho Testamento</span>
         </TopicWrapper>
 
-        <TopicWrapper>
+        <TopicWrapper to="newtestament">
           <IconImage src={grain} alt="grain icon" />
           <span>Novo Testamento</span>
         </TopicWrapper>

@@ -26,22 +26,22 @@ const Button = styled.button`
 
   @media ${({ theme }) => theme.queries.medium} {
     font-size: 14px;
-    width: 30%;
+    width: 50%;
     height: 45px;
   }
 
   @media ${({ theme }) => theme.queries.big} {
-    width: 40%;
+    width: 60%;
     height: 45px;
   }
 
   @media ${({ theme }) => theme.queries.large} {
-    width: 30%;
+    width: 40%;
     height: 45px;
   }
 
   @media ${({ theme }) => theme.queries.xlarge} {
-    width: 30%;
+    width: 40%;
     height: 45px;
   }
 `;

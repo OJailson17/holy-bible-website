@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { PageTitle } from "../../components/Title/PageTitle";
 import { Verse } from "../../components/Verse/Verse";
-import { BtnContainer } from "../VersePage/VersePage.style";
 
 const SubtitleContainer = styled.div`
 width: 100%;
@@ -51,6 +51,7 @@ export function WordOfDay() {
                 <Verse data={verse} versePage={true}/>
                 <Navigation />
             </PageWrapper>
+            
             <BtnContainer>
             <ExtraBtn>Adicionar aos favoritos</ExtraBtn>
             <ExtraBtn>Ler capítulo</ExtraBtn>

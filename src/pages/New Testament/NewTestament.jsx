@@ -1,18 +1,17 @@
-import React from "react";
+import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { Buttons } from "../../components/Buttons/Buttons";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { Subtitle } from "../../components/Subtitle/Subtitle";
 import { PageTitle } from "../../components/Title/PageTitle";
-import { BtnContainer} from "../../components/BtnContainer/BtnContainer";
 
-export function Topics() {
+export function NewTestament() {
   return (
     <>
       <PageTitle />
 
       <Subtitle>
-        <h2>Temas Bíblicos</h2>
+        <h2>Novo Testamento</h2>
       </Subtitle>
 
       <PageWrapper>
@@ -29,5 +28,5 @@ export function Topics() {
       <Navigation />
       </PageWrapper>
     </>
-  );
+  )
 }

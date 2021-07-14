@@ -28,7 +28,7 @@ export function Home() {
           <span>Palavra do dia</span>
         </TopicWrapper>
 
-        <TopicWrapper to="/">
+        <TopicWrapper to="/favorites">
           <i className="fas fa-star"></i>
           <span>Versículos Favoritos</span>
         </TopicWrapper>

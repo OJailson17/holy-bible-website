@@ -46,7 +46,7 @@ export function Navigation({ primary }) {
           <Link to="/newtestament">Novo Testamento</Link>
         </li>
         <li>
-          <Link to="/">Versículos Favoritos</Link>
+          <Link to="/favorites">Versículos Favoritos</Link>
         </li>
       </LinkList>
     </>

@@ -18,7 +18,7 @@ export function NewTestament() {
       <PageWrapper>
         <BtnContainer primary>
         {novoTestamento.map(livro => (
-          <Buttons>{livro}</Buttons>
+          <Buttons key={livro}>{livro}</Buttons>
         ))}
         </BtnContainer>
         <Navigation />

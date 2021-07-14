@@ -13,10 +13,11 @@ height: 30px;
 display: flex;
 justify-content: flex-end;
 align-items: center;
-font-size: 16px;
 position: relative;
 
-& > div {
+& > button {
+    font-size: 16px;
+    background: transparent;
     height: 30px;
     display: flex;
     flex-direction: row-reverse;
@@ -24,6 +25,7 @@ position: relative;
     justify-content: center;
     text-align: center;
     cursor: pointer;
+    outline: none;
     border: none;
     border-radius: 5px;
     transition: .3s;
@@ -32,6 +34,7 @@ position: relative;
         color: black;
         font-size: 18px;
         margin-left: 10px;
+        margin-right: 3px;
     }
 
     span {
@@ -81,10 +84,10 @@ export function FavoriteVerse() {
       </Subtitle>
 
       <FavoriteBtn>
-      <div>
+      <button>
       <i className="fas fa-plus-circle"></i>
       <span>Adicionar Favorito</span>
-      </div>
+      </button>
       </FavoriteBtn>
       <PageWrapper>
         <BtnContainer primary>

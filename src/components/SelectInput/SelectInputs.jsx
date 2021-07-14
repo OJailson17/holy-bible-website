@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
+import { useContext } from "react";
+import { BibleContextProvider } from "../../context/bibleContext";
 
 const SelectInput = styled(Select)`
   width: 100%;
@@ -20,19 +22,27 @@ const Form = styled(FormControl)`
 `;
 
 export function SelectBook() {
+  const { books, book, setBook } = useContext(BibleContextProvider);
+
+  const handleChange = (e) => {
+    setBook(e.target.value);
+  };
+
   return (
     <>
       <FormControl variant="outlined">
         <InputLabel id="chapter-label">Escolher livro</InputLabel>
         <SelectInput
           labelId="chapter-label"
-          //   value={10}
-          //   onChange={handleChange}
+          value={book}
+          onChange={handleChange}
           label="Escolher livro"
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {books?.map((book) => (
+            <MenuItem value={book?.abbrev?.pt} key={book?.name}>
+              {book?.name}
+            </MenuItem>
+          ))}
         </SelectInput>
       </FormControl>
     </>
@@ -40,7 +50,11 @@ export function SelectBook() {
 }
 
 export function SelectChapter({ verse }) {
-  const myArr = [1, 2, 3, 4, 5];
+  const { qtdChapter, chapter, setChapter } = useContext(BibleContextProvider); 
+  
+  const handleChange = (e) => {
+    setChapter(e.target.value);
+  }
 
   return (
     <>
@@ -51,13 +65,13 @@ export function SelectChapter({ verse }) {
         <SelectInput
           className="hidden"
           labelId="chapter-label"
-          //   value={10}
-          //   onChange={handleChange}
+            value={chapter}
+            onChange={handleChange}
           label="Escolher capítulo"
         >
-          {myArr.map((item) => (
-            <MenuItem value={item} key={item}>
-              {item}
+          {[...Array(qtdChapter)]?.map((item, index) => (
+            <MenuItem value={index + 1} key={index + 1}>
+              {index + 1}
             </MenuItem>
           ))}
         </SelectInput>

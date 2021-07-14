@@ -1,5 +1,7 @@
 import React from 'react'
+import { useContext } from 'react'
 import styled from 'styled-components'
+import { BibleContextProvider } from '../../context/bibleContext'
 
 
 const VerseContainer = styled.div`
@@ -42,15 +44,17 @@ margin-bottom: 5px;
 `
 
 export function Verse({data, versePage}) {
-    const {book, chapter, verses} = data
+    const {chapterData} = useContext(BibleContextProvider)
+
+    const {book, chapter, verses} = chapterData
     return (
         <VerseContainer>
-            <h3>{book.name} - {chapter.number}{versePage ? `:${verses[0].number}` : ''}</h3>
+            <h3>{book?.name} - {chapter?.number}{versePage ? `:${verses[0]?.number}` : ''}</h3>
             <div>
-            {verses.map(verse => (
-                <VerseWrapper key={verse.number}>
-                <span>{verse.number}</span>
-                <p>{verse.text}</p>
+            {verses?.map(verse => (
+                <VerseWrapper key={verse?.number}>
+                <span>{verse?.number}</span>
+                <p>{verse?.text}</p>
             </VerseWrapper>
             ))}
             </div>

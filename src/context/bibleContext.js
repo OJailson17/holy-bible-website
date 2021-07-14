@@ -9,11 +9,28 @@ export const BibleContext = ({ children }) => {
   const [chapterData, setChapterData] = useState({});
   const [qtdChapter, setQtdChapter] = useState("");
   const [book, setBook] = useState("");
+  const [newTestament, setNewTestament] = useState([])
+  const [oldTestament, setOldTestament] = useState([])
 
-  useEffect(() => {
-    setBook("gn");
-    setChapter(1);
-  }, []);
+
+
+  
+  // Get books data
+  const getBooks = async () => {
+    const response = await fetch(
+      "https://www.abibliadigital.com.br/api/books",
+      {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlRodSBKdWwgMDggMjAyMSAwNzowODozNCBHTVQrMDAwMC5qYXlsbHNvbnNvdXNhM0BnbWFpbC5jb20iLCJpYXQiOjE2MjU3MjgxMTR9.zhoFn6pH-aOENIf4NKUnzZiC6enc8o8a7Zl6I14n8d0",
+        },
+      }
+    );
+    const books = await response.json();
+    // console.log(books)
+    setBooks(books);
+  };
+
 
   const getBook = async () => {
     const response = await fetch(
@@ -46,6 +63,20 @@ export const BibleContext = ({ children }) => {
     setChapterData(chapterData);
   };
 
+  const getTestaments = () => {
+    const newTestamentBooks = books.filter(book => book.testament === "NT")
+    const oldTestamentBooks = books.filter(book => book.testament === "VT")
+    
+    setNewTestament(newTestamentBooks)
+    setOldTestament(oldTestamentBooks)
+  }
+
+  useEffect(() => {
+    getBooks()
+    setBook("gn");
+    setChapter(1);
+  }, []);
+
   useEffect(() => {
     getChapterData();
   }, [chapter]);
@@ -55,6 +86,10 @@ export const BibleContext = ({ children }) => {
     setChapter(1);
     getChapterData();
   }, [book]);
+
+  useEffect(() => {
+    getTestaments()
+  }, [books])
 
   return (
     <BibleContextProvider.Provider
@@ -67,6 +102,8 @@ export const BibleContext = ({ children }) => {
         setBook,
         qtdChapter,
         chapterData,
+        newTestament,
+        oldTestament
       }}
     >
       {children}

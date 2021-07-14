@@ -1,12 +1,14 @@
+import { useContext } from "react";
 import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { Buttons } from "../../components/Buttons/Buttons";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { Subtitle } from "../../components/Subtitle/Subtitle";
 import { PageTitle } from "../../components/Title/PageTitle";
+import { BibleContextProvider } from "../../context/bibleContext";
 
 export function NewTestament() {
-  const novoTestamento = ["Mateus", "Marcos", "Lucas", "João", "Atos", "Romanos", "1 Coríntios", "2 Coríntios", "Gálatas"]
+  const {newTestament} = useContext(BibleContextProvider)
   return (
     <>
       <PageTitle />
@@ -17,8 +19,8 @@ export function NewTestament() {
 
       <PageWrapper>
         <BtnContainer primary>
-        {novoTestamento.map(livro => (
-          <Buttons key={livro}>{livro}</Buttons>
+        {newTestament?.map(livro => (
+          <Buttons key={livro?.name}>{livro?.name}</Buttons>
         ))}
         </BtnContainer>
         <Navigation />

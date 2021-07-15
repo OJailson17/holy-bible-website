@@ -1,7 +1,6 @@
 import React from 'react'
-import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { BibleContextProvider } from '../../context/bibleContext'
 
 
 const VerseContainer = styled.div`
@@ -33,8 +32,12 @@ margin-bottom: 5px;
      font-weight: bold;
      color: gray;
      font-size: 15px;
-     margin-right: 5px;
+     margin-right: 10px;
  }
+
+ a {
+     color: black;
+  }
 
  p {
      padding-top: 5px;
@@ -43,22 +46,42 @@ margin-bottom: 5px;
  }
 `
 
-export function Verse({data, versePage}) {
-    const {chapterData} = useContext(BibleContextProvider)
+export function Verse({chapterData, versePage}) {
 
     const {book, chapter, verses} = chapterData
     return (
+        <>
+        {
+            versePage 
+            ? 
+            <VerseContainer>
+                <h3>{book?.name} - {chapterData?.chapter}:{chapterData?.number}</h3>
+                <div>
+                    <VerseWrapper>
+                        <span>{chapterData?.number}</span>
+                        <Link to="/">
+                            <p>{chapterData?.text}</p>
+                        </Link>
+                    </VerseWrapper>
+                </div>
+            </VerseContainer>
+            :
+        
         <VerseContainer>
-            <h3>{book?.name} - {chapter?.number}{versePage ? `:${verses[0]?.number}` : ''}</h3>
+            <h3>{book?.name} - {chapter?.number}</h3>
             <div>
             {verses?.map(verse => (
                 <VerseWrapper key={verse?.number}>
                 <span>{verse?.number}</span>
+            <Link to="/">
                 <p>{verse?.text}</p>
+            </Link>
             </VerseWrapper>
             ))}
             </div>
         </VerseContainer>
+        }
+        </>
     )
 }
 

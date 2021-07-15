@@ -9,15 +9,12 @@ export const BibleContext = ({ children }) => {
   const [chapterData, setChapterData] = useState({});
   const [qtdChapter, setQtdChapter] = useState("");
   const [book, setBook] = useState("");
-  const [verse, setVerse] = useState({})
-  const [verseNum, setVerseNum] = useState('')
-  const [qtdverse, setQtdVerse] = useState('')
-  const [newTestament, setNewTestament] = useState([])
-  const [oldTestament, setOldTestament] = useState([])
+  const [verse, setVerse] = useState({});
+  const [verseNum, setVerseNum] = useState("");
+  const [qtdverse, setQtdVerse] = useState("");
+  const [newTestament, setNewTestament] = useState([]);
+  const [oldTestament, setOldTestament] = useState([]);
 
-
-
-  
   // Get books data
   const getBooks = async () => {
     const response = await fetch(
@@ -31,7 +28,6 @@ export const BibleContext = ({ children }) => {
     const books = await response.json();
     setBooks(books);
   };
-
 
   const getBook = async () => {
     const response = await fetch(
@@ -56,9 +52,7 @@ export const BibleContext = ({ children }) => {
         },
       }
     );
-
     const chapterData = await response.json();
-
     setChapterData(chapterData);
   };
 
@@ -72,20 +66,19 @@ export const BibleContext = ({ children }) => {
       }
     );
     const verseObj = await response.json();
-    setVerse(verseObj)
-  }
-
+    setVerse(verseObj);
+  };
 
   const getTestaments = () => {
-    const newTestamentBooks = books.filter(book => book.testament === "NT")
-    const oldTestamentBooks = books.filter(book => book.testament === "VT")
-    
-    setNewTestament(newTestamentBooks)
-    setOldTestament(oldTestamentBooks)
-  }
+    const newTestamentBooks = books.filter((book) => book.testament === "NT");
+    const oldTestamentBooks = books.filter((book) => book.testament === "VT");
+
+    setNewTestament(newTestamentBooks);
+    setOldTestament(oldTestamentBooks);
+  };
 
   useEffect(() => {
-    getBooks()
+    getBooks();
     setBook("gn");
     setChapter(1);
   }, []);
@@ -101,12 +94,12 @@ export const BibleContext = ({ children }) => {
   }, [book]);
 
   useEffect(() => {
-    getTestaments()
-  }, [books])
+    getTestaments();
+  }, [books]);
 
   useEffect(() => {
-    getVerse()
-  }, [verseNum])
+    getVerse();
+  }, [verseNum]);
 
   return (
     <BibleContextProvider.Provider
@@ -126,7 +119,7 @@ export const BibleContext = ({ children }) => {
         verse,
         setVerse,
         verseNum,
-        setVerseNum
+        setVerseNum,
       }}
     >
       {children}

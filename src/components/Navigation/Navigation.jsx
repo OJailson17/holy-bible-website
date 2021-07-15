@@ -4,9 +4,12 @@ import styled, { css } from "styled-components";
 import useWindowDimensions from "../../middlewares/windowViewport";
 
 const LinkList = styled.ul`
-  width: 20%;
+/* background-color: red; */
+  width: 30%;
+  height: 200px;
   font-size: 18px;
   line-height: 1.8;
+  margin-bottom: 50px;
   li a {
     color: black;
 
@@ -19,8 +22,8 @@ const LinkList = styled.ul`
   ${({ primary }) =>
     primary &&
     css`
-      margin-top: 200px;
-      width: 29%;
+      margin-top: 30px;
+      width: 50%;
     `}
 `;
 

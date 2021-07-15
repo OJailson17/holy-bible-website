@@ -89,7 +89,7 @@ export function FavoriteVerse() {
       <span>Adicionar Favorito</span>
       </button>
       </FavoriteBtn>
-      <PageWrapper>
+      <PageWrapper secondary>
         <BtnContainer primary>
           <Buttons secondary>
             <div>

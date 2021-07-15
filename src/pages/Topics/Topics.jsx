@@ -15,7 +15,7 @@ export function Topics() {
         <h2>Temas Bíblicos</h2>
       </Subtitle>
 
-      <PageWrapper>
+      <PageWrapper secondary>
       <BtnContainer primary>
           <Buttons>Gênesis</Buttons>
           <Buttons>Êxodo</Buttons>

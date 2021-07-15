@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = styled.button`
-  width: 48%;
+  width: 50%;
   height: 35px;
   background-color: transparent;
   color: black;
@@ -20,7 +20,7 @@ const Button = styled.button`
 
   @media ${({ theme }) => theme.queries.xsmall} {
     font-size: 14px;
-    width: 49%;
+    width: 70%;
     height: 45px;
   }
 
@@ -46,6 +46,6 @@ const Button = styled.button`
   }
 `;
 
-export function ExtraBtn({ children }) {
-  return <Button>{children}</Button>;
+export function ExtraBtn({ children, readChapter }) {
+  return <Button onClick={readChapter}>{children}</Button>;
 }

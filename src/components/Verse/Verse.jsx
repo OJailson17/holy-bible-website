@@ -8,15 +8,15 @@ const VerseContainer = styled.div`
   }
 
   @media ${({ theme }) => theme.queries.big} {
-    width: 50%;
+    width: 90%;
   }
 
   @media ${({ theme }) => theme.queries.large} {
-    width: 50%;
+    width: 70%;
   }
 
   @media ${({ theme }) => theme.queries.xlarge} {
-    width: 50%;
+    width: 70%;
   }
 `;
 

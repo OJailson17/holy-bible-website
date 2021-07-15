@@ -18,7 +18,7 @@ export function OldTestament() {
         <h2>Velho Testamento</h2>
       </Subtitle>
 
-      <PageWrapper>
+      <PageWrapper secondary>
       <BtnContainer primary>
           {oldTestament?.map(book => (
             <Buttons key={book?.name}>{book?.name}</Buttons>

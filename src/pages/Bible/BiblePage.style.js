@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 
 export const PageContainer = styled.div`
+/* background-color: yellow; */
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-top: 32px;
-  margin-bottom: 60px;
 
   .select-container {
     width: 100%;
@@ -35,20 +34,20 @@ justify-content: space-between;
 margin-bottom: 30px;
 
 @media ${({ theme }) => theme.queries.big} {
-     width: 50%;
+     width: 88%;
     }
 
  @media ${({ theme }) => theme.queries.large} {
-     width: 50%;
+     width: 70%;
     }
 
  @media ${({ theme }) => theme.queries.xlarge} {
-     width: 50%;
+     width: 70%;
     }
 `
 
 export const ChangePageBtn = styled.button`
-width: 20%;
+width: 30%;
 height: 35px;
 margin-top: 30px;
 background: transparent;

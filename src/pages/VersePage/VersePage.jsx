@@ -22,8 +22,10 @@ export function VersePage() {
       <PageTitle />
 
       <main>
-        <PageWrapper>
+        <PageWrapper secondary>
+        <div>
           <Verse chapterData={verse} versePage={true} />
+        </div>
           <NumberNavigation
             title="Versiculos"
             numbers={chapterData?.chapter?.verses}
@@ -32,7 +34,7 @@ export function VersePage() {
         </PageWrapper>
         <BtnContainer>
           <ExtraBtn>Adicionar aos favoritos</ExtraBtn>
-          <ExtraBtn>Ler capítulo</ExtraBtn>
+          <ExtraBtn readChapter={() => alert("Hello")}>Ler capítulo</ExtraBtn>
         </BtnContainer>
       </main>
     </>

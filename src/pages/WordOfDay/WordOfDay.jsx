@@ -59,7 +59,7 @@ export function WordOfDay() {
     }
 
   }, [])
-  console.log(randomVerse);
+  
     return (
         <>
         <PageTitle />
@@ -69,8 +69,10 @@ export function WordOfDay() {
         </SubtitleContainer>
 
         <main>
-            <PageWrapper>
+            <PageWrapper secondary>
+            <div>
                 <Verse chapterData={randomVerse} versePage={true}/>
+            </div>
                 <Navigation />
             </PageWrapper>
             

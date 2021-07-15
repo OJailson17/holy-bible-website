@@ -6,9 +6,11 @@ import useWindowDimensions from "../../middlewares/windowViewport";
 
 const NavContainer = styled.div`
   width: 400px;
+  /* height: 500px; */
+  /* background-color: red; */
   & > div {
     width: 400px;
-    height: 50px;
+    /* height: 50px; */
     margin-top: 24px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);

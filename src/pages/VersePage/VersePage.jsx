@@ -23,7 +23,9 @@ export function VersePage() {
 
       <main>
         <PageWrapper secondary>
+        <div>
           <Verse chapterData={verse} versePage={true} />
+        </div>
           <NumberNavigation
             title="Versiculos"
             numbers={chapterData?.chapter?.verses}

@@ -21,7 +21,7 @@ const VerseContainer = styled.div`
 `;
 
 const VerseWrapper = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   margin-bottom: 5px;

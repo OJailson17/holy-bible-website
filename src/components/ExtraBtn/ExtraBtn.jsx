@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = styled.button`
-  width: 50%;
+  width: 49%;
   height: 35px;
   background-color: transparent;
   color: black;

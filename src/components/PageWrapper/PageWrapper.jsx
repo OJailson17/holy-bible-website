@@ -6,6 +6,7 @@ const PageContainer = styled.div`
   flex-direction: ${({secondary}) => secondary ? "row" : "column"};
   justify-content: space-between;
   margin-top: 32px;
+  margin-bottom: 20px;
   /* background-color: green; */
 `;
 

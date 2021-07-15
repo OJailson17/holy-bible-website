@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
@@ -21,23 +23,42 @@ width: 100%;
 `
 
 export function WordOfDay() {
+  const [randomVerse, setRandomVerse] = useState({})
 
-    const verse = {
-    book: {
-      name: "Gênesis",
-      chapters: 28,
-    },
-    chapter: {
-      number: 1,
-      verses: 28,
-    },
-    verses: [
-      {
-        number: 2,
-        text: "E a terra era sem forma e vazia; e havia trevas sobre a face do abismo; e o Espírito de Deus se movia sobre a face das águas.",
-      },
-    ],
-  };
+  const getVerseFromStorage = () => {
+    return localStorage.getItem("verseOfDay")
+  }
+
+  const getRandomVerse = async () => {
+    const response = await fetch('https://www.abibliadigital.com.br/api/verses/acf/random', {
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlRodSBKdWwgMDggMjAyMSAwNzowODozNCBHTVQrMDAwMC5qYXlsbHNvbnNvdXNhM0BnbWFpbC5jb20iLCJpYXQiOjE2MjU3MjgxMTR9.zhoFn6pH-aOENIf4NKUnzZiC6enc8o8a7Zl6I14n8d0",
+
+      }
+    })
+    const verse = await response.json()
+    setRandomVerse(verse)
+    localStorage.setItem("verseOfDay", JSON.stringify(verse))
+  }
+
+  const checkDate = () => {
+    const date = new Date().toLocaleDateString()
+    const storageDate = localStorage.getItem("date")
+    
+    if(storageDate === date) return false
+
+    localStorage.setItem("date", date)
+    return true
+  }
+
+  useEffect(() => {
+    if(!checkDate()) {
+      setRandomVerse(JSON.parse(getVerseFromStorage()))
+    } else {
+      getRandomVerse()
+    }
+  }, [])
+
     return (
         <>
         <PageTitle />
@@ -48,7 +69,7 @@ export function WordOfDay() {
 
         <main>
             <PageWrapper>
-                <Verse data={verse} versePage={true}/>
+                <Verse chapterData={randomVerse} versePage={true}/>
                 <Navigation />
             </PageWrapper>
             

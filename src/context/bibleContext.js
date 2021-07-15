@@ -9,6 +9,9 @@ export const BibleContext = ({ children }) => {
   const [chapterData, setChapterData] = useState({});
   const [qtdChapter, setQtdChapter] = useState("");
   const [book, setBook] = useState("");
+  const [verse, setVerse] = useState({})
+  const [verseNum, setVerseNum] = useState('')
+  const [qtdverse, setQtdVerse] = useState('')
   const [newTestament, setNewTestament] = useState([])
   const [oldTestament, setOldTestament] = useState([])
 
@@ -59,6 +62,20 @@ export const BibleContext = ({ children }) => {
     setChapterData(chapterData);
   };
 
+  const getVerse = async () => {
+    const response = await fetch(
+      `https://www.abibliadigital.com.br/api/verses/acf/${book}/${chapter}/${verseNum}`,
+      {
+        headers: {
+          Authorization: process.env.REACT_APP_API_TOKEN,
+        },
+      }
+    );
+    const verseObj = await response.json();
+    setVerse(verseObj)
+  }
+
+
   const getTestaments = () => {
     const newTestamentBooks = books.filter(book => book.testament === "NT")
     const oldTestamentBooks = books.filter(book => book.testament === "VT")
@@ -87,6 +104,10 @@ export const BibleContext = ({ children }) => {
     getTestaments()
   }, [books])
 
+  useEffect(() => {
+    getVerse()
+  }, [verseNum])
+
   return (
     <BibleContextProvider.Provider
       value={{
@@ -99,7 +120,13 @@ export const BibleContext = ({ children }) => {
         qtdChapter,
         chapterData,
         newTestament,
-        oldTestament
+        oldTestament,
+        setQtdVerse,
+        qtdverse,
+        verse,
+        setVerse,
+        verseNum,
+        setVerseNum
       }}
     >
       {children}

@@ -15,7 +15,7 @@ function App() {
     <Switch>
     <Route exact path="/" component={Home}/>
     <Route exact path="/bible" component={BiblePage} />
-    <Route exact path="/bible/verse" component={VersePage} />
+    <Route exact path="/bible/book/:book/chapter/:chapterNum/verse/:verseNum/" component={VersePage} />
     <Route exact path="/wordofday" component={WordOfDay} />
     <Route exact path="/topics" component={Topics} />
     <Route exact path="/newtestament" component={NewTestament} />

@@ -56,7 +56,9 @@ export function Verse({ chapterData, versePage }) {
           <div>
             <VerseWrapper>
               <span>{chapterData?.number}</span>
-              <Link to="/">
+              <Link
+                to={`/bible/book/${book?.abbrev?.pt}/chapter/${chapterData?.chapter}/verse/${chapterData?.number}`}
+              >
                 <p>{chapterData?.text}</p>
               </Link>
             </VerseWrapper>
@@ -71,7 +73,9 @@ export function Verse({ chapterData, versePage }) {
             {verses?.map((verse) => (
               <VerseWrapper key={verse?.number}>
                 <span>{verse?.number}</span>
-                <Link to="/">
+                <Link
+                  to={`/bible/book/${book?.abbrev?.pt}/chapter/${chapterData?.chapter?.number}/verse/${verse?.number}`}
+                >
                   <p>{verse?.text}</p>
                 </Link>
               </VerseWrapper>

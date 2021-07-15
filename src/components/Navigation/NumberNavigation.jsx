@@ -25,20 +25,32 @@ const Number = styled.p`
   cursor: pointer;
 `;
 
-export function NumberNavigation({ title }) {
-  const {qtdChapter, setChapter} = useContext(BibleContextProvider)
+export function NumberNavigation({ title, versePage }) {
+  const {qtdChapter, setChapter, chapterData, setVerseNum} = useContext(BibleContextProvider)
   const { width } = useWindowDimensions();
 
   const handleClick = (e) => {
     setChapter(e.target.innerText)
   }
 
+  const selectVerses = (e) => {
+    setVerseNum(e.target.innerText)
+  }
+
+  const setQtdValue = () => {
+    if(versePage) {
+      return chapterData?.chapter?.verses
+    } else {
+      return qtdChapter
+    }
+  }
+
   return (
     <NavContainer hidden={width < 1024 ? "hidden" : ""}>
       <h3>{title}</h3>
       <div className="numbers">
-        {[...Array(qtdChapter)]?.map((ArrayElement, index) => (
-          <Number key={index} onClick={handleClick}>{index + 1}</Number>
+        {[...Array(setQtdValue())]?.map((ArrayElement, index) => (
+          <Number key={index} onClick={versePage ? selectVerses : handleClick}>{index + 1}</Number>
         ))}
       </div>
     </NavContainer>

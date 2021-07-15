@@ -57,8 +57,9 @@ export function WordOfDay() {
     } else {
       getRandomVerse()
     }
-  }, [])
 
+  }, [])
+  console.log(randomVerse);
     return (
         <>
         <PageTitle />

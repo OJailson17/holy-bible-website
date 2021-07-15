@@ -1,35 +1,34 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useContext } from "react";
 import { PageTitle } from "../../components/Title/PageTitle";
 import { Verse } from "../../components/Verse/Verse";
 import { NumberNavigation } from "../../components/Navigation/NumberNavigation";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
+import { useParams } from "react-router-dom";
+import { BibleContextProvider } from "../../context/bibleContext";
 
 export function VersePage() {
-  const verse = {
-    book: {
-      name: "Gênesis",
-      chapters: 28,
-    },
-    chapter: {
-      number: 1,
-      verses: 28,
-    },
-    verses: [
-      {
-        number: 2,
-        text: "E a terra era sem forma e vazia; e havia trevas sobre a face do abismo; e o Espírito de Deus se movia sobre a face das águas.",
-      },
-    ],
-  };
+  const { verseNum } = useParams();
+  const { chapterData, verse, setVerseNum } =
+    useContext(BibleContextProvider);
+
+  useEffect(() => {
+    setVerseNum(verseNum)
+  }, []);
   return (
     <>
       <PageTitle />
 
       <main>
         <PageWrapper>
-          <Verse data={verse} versePage={true} />
-          <NumberNavigation title="Versiculos" numbers={verse.chapter.verses} />
+          <Verse chapterData={verse} versePage={true} />
+          <NumberNavigation
+            title="Versiculos"
+            numbers={chapterData?.chapter?.verses}
+            versePage
+          />
         </PageWrapper>
         <BtnContainer>
           <ExtraBtn>Adicionar aos favoritos</ExtraBtn>

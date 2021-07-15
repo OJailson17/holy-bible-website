@@ -21,7 +21,7 @@ const VerseContainer = styled.div`
 `;
 
 const VerseWrapper = styled.div`
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: flex-start;
   margin-bottom: 5px;
@@ -58,6 +58,7 @@ export function Verse({ chapterData, versePage }) {
               <span>{chapterData?.number}</span>
               <Link
                 to={`/bible/book/${book?.abbrev?.pt}/chapter/${chapterData?.chapter}/verse/${chapterData?.number}`}
+                style={versePage ? {pointerEvents: "none"} : {}}
               >
                 <p>{chapterData?.text}</p>
               </Link>

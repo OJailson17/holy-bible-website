@@ -21,13 +21,11 @@ export const BibleContext = ({ children }) => {
       "https://www.abibliadigital.com.br/api/books",
       {
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlRodSBKdWwgMDggMjAyMSAwNzowODozNCBHTVQrMDAwMC5qYXlsbHNvbnNvdXNhM0BnbWFpbC5jb20iLCJpYXQiOjE2MjU3MjgxMTR9.zhoFn6pH-aOENIf4NKUnzZiC6enc8o8a7Zl6I14n8d0",
+          Authorization: process.env.REACT_APP_API_TOKEN,
         },
       }
     );
     const books = await response.json();
-    // console.log(books)
     setBooks(books);
   };
 
@@ -37,8 +35,7 @@ export const BibleContext = ({ children }) => {
       `https://www.abibliadigital.com.br/api/books/${book}`,
       {
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlRodSBKdWwgMDggMjAyMSAwNzowODozNCBHTVQrMDAwMC5qYXlsbHNvbnNvdXNhM0BnbWFpbC5jb20iLCJpYXQiOjE2MjU3MjgxMTR9.zhoFn6pH-aOENIf4NKUnzZiC6enc8o8a7Zl6I14n8d0",
+          Authorization: process.env.REACT_APP_API_TOKEN,
         },
       }
     );
@@ -52,8 +49,7 @@ export const BibleContext = ({ children }) => {
       `https://www.abibliadigital.com.br/api/verses/acf/${book}/${chapter}`,
       {
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlRodSBKdWwgMDggMjAyMSAwNzowODozNCBHTVQrMDAwMC5qYXlsbHNvbnNvdXNhM0BnbWFpbC5jb20iLCJpYXQiOjE2MjU3MjgxMTR9.zhoFn6pH-aOENIf4NKUnzZiC6enc8o8a7Zl6I14n8d0",
+          Authorization: process.env.REACT_APP_API_TOKEN,
         },
       }
     );

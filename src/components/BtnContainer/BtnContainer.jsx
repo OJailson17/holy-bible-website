@@ -17,7 +17,7 @@ const BtnWrapper = styled.div`
     grid-template-columns: 1fr 1fr;
   }
   @media ${({ theme }) => theme.queries.large} {
-    width: 65%;
+    width: 75%;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }

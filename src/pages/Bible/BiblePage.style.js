@@ -38,7 +38,7 @@ margin-bottom: 30px;
     }
 
  @media ${({ theme }) => theme.queries.large} {
-     width: 70%;
+     width: 80%;
     }
 
  @media ${({ theme }) => theme.queries.xlarge} {

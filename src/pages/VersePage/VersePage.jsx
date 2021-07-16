@@ -6,24 +6,31 @@ import { NumberNavigation } from "../../components/Navigation/NumberNavigation";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { BibleContextProvider } from "../../context/bibleContext";
 
 export function VersePage() {
   const { verseNum } = useParams();
   const { chapterData, verse, setVerseNum } =
     useContext(BibleContextProvider);
+    const history = useHistory()
+
+    const readChapter = () => {
+      history.push("/bible")
+    }
 
   useEffect(() => {
     setVerseNum(verseNum)
   }, []);
+
+
   return (
     <>
       <PageTitle />
 
       <main>
         <PageWrapper secondary>
-        <div>
+        <div style={{width: "100%"}}>
           <Verse chapterData={verse} versePage={true} />
         </div>
           <NumberNavigation
@@ -34,7 +41,7 @@ export function VersePage() {
         </PageWrapper>
         <BtnContainer>
           <ExtraBtn>Adicionar aos favoritos</ExtraBtn>
-          <ExtraBtn readChapter={() => alert("Hello")}>Ler capítulo</ExtraBtn>
+          <ExtraBtn readChapter={readChapter}>Ler capítulo</ExtraBtn>
         </BtnContainer>
       </main>
     </>

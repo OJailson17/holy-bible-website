@@ -102,7 +102,7 @@ export function FavoriteVerse() {
       <PageWrapper secondary>
         <BtnContainer primary>
           {favorites?.map(favorite => (
-            <Buttons secondary key={favorite?.name}>
+            <Buttons secondary key={`${favorite?.chapter}: ${favorite?.verse}`}>
             <div>
               <div className="text">{favorite?.name} {favorite?.chapter}:{favorite?.verse}</div>
               <div className="deleteIcon">

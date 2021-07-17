@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
 import { addFavorite } from "../../components/helper/addFavorite";
+import { checkFavoriteList } from "../../components/helper/checkFavoriteList";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { PageTitle } from "../../components/Title/PageTitle";
@@ -29,6 +30,7 @@ const SubtitleContainer = styled.div`
 
 export function WordOfDay() {
   const [randomVerse, setRandomVerse] = useState({});
+  const [isFavorite, setIsFavorite] = useState(false)
   const {setBook} = useContext(BibleContextProvider)
 
   const history = useHistory();
@@ -37,14 +39,16 @@ export function WordOfDay() {
     history.push("/bible");
   };
 
+  const verseObj = {
+    abbrev: randomVerse?.book?.abbrev?.pt,
+    name: randomVerse?.book?.name,
+    chapter: randomVerse?.chapter,
+    verse: randomVerse?.number
+  }
+
   const handleFavorite = () => {
-    const verseObj = {
-      abbrev: randomVerse.book.abbrev.pt,
-      name: randomVerse.book.name,
-      chapter: randomVerse.chapter,
-      verse: randomVerse.number
-    }
     addFavorite(verseObj)
+    setIsFavorite(!isFavorite)
   }
 
   const getVerseFromStorage = () => {
@@ -85,7 +89,11 @@ export function WordOfDay() {
 
   useEffect(() => {
     setBook(randomVerse?.book?.abbrev?.pt)
+    checkFavoriteList(verseObj) ? setIsFavorite(true) : setIsFavorite(false)
   }, [randomVerse])
+
+  // useEffect(() => {
+  // }, [randomVerse])
 
   
   return (
@@ -103,7 +111,7 @@ export function WordOfDay() {
         </PageWrapper>
 
         <BtnContainer>
-          <ExtraBtn clickFunction={handleFavorite}>Adicionar aos favoritos</ExtraBtn>
+          <ExtraBtn clickFunction={handleFavorite}>{isFavorite ? "Remover dos Favorito" : "Adicionar aos favoritos"}</ExtraBtn>
           <ExtraBtn clickFunction={readChapter}>Ler capítulo</ExtraBtn>
         </BtnContainer>
       </main>

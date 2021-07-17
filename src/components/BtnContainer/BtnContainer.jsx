@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const BtnWrapper = styled.div`
+/* background-color: red; */
   width: 100%;
   display: flex;
   flex-direction: ${({primary}) => primary ? "column" : ""};

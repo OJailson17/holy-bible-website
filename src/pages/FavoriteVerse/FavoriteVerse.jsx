@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components'
 import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { Buttons } from "../../components/Buttons/Buttons";
@@ -73,6 +75,14 @@ position: relative;
 `
 
 export function FavoriteVerse() {
+  const [favorites,setFavorites] = useState([])
+
+  useEffect(() => {
+    const favoriteList = JSON.parse(localStorage.getItem("favorites")) || []
+    setFavorites(favoriteList)
+  }, [])
+
+  // console.log(favorites);
   return (
     <>
       <PageTitle />
@@ -91,78 +101,16 @@ export function FavoriteVerse() {
       </FavoriteBtn>
       <PageWrapper secondary>
         <BtnContainer primary>
-          <Buttons secondary>
+          {favorites?.map(favorite => (
+            <Buttons secondary key={favorite?.name}>
             <div>
-              <div className="text">Salmos 15:5</div>
+              <div className="text">{favorite?.name} {favorite?.chapter}:{favorite?.verse}</div>
               <div className="deleteIcon">
                 <i className="fas fa-trash"></i>
               </div>
             </div>
           </Buttons>
-          <Buttons secondary>
-            <div>
-              <div className="text">Apocalipse 20:9</div>
-              <div className="deleteIcon">
-                <i className="fas fa-trash"></i>
-              </div>
-            </div>
-          </Buttons>
-          <Buttons secondary>
-            <div>
-              <div className="text">Salmos 15:5</div>
-              <div className="deleteIcon">
-                <i className="fas fa-trash"></i>
-              </div>
-            </div>
-          </Buttons>
-          <Buttons secondary>
-            <div>
-              <div className="text">Salmos 15:5</div>
-              <div className="deleteIcon">
-                <i className="fas fa-trash"></i>
-              </div>
-            </div>
-          </Buttons>
-          <Buttons secondary>
-            <div>
-              <div className="text">Salmos 15:5</div>
-              <div className="deleteIcon">
-                <i className="fas fa-trash"></i>
-              </div>
-            </div>
-          </Buttons>
-          <Buttons secondary>
-            <div>
-              <div className="text">Salmos 15:5</div>
-              <div className="deleteIcon">
-                <i className="fas fa-trash"></i>
-              </div>
-            </div>
-          </Buttons>
-          <Buttons secondary>
-            <div>
-              <div className="text">Salmos 15:5</div>
-              <div className="deleteIcon">
-                <i className="fas fa-trash"></i>
-              </div>
-            </div>
-          </Buttons>
-          <Buttons secondary>
-            <div>
-              <div className="text">Salmos 15:5</div>
-              <div className="deleteIcon">
-                <i className="fas fa-trash"></i>
-              </div>
-            </div>
-          </Buttons>
-          <Buttons secondary>
-            <div>
-              <div className="text">Salmos 15:5</div>
-              <div className="deleteIcon">
-                <i className="fas fa-trash"></i>
-              </div>
-            </div>
-          </Buttons>
+          ))}
         </BtnContainer>
         <Navigation />
       </PageWrapper>

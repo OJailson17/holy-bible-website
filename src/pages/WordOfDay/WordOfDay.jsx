@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
+import { addFavorite } from "../../components/helper/addFavorite";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { PageTitle } from "../../components/Title/PageTitle";
@@ -35,6 +36,16 @@ export function WordOfDay() {
   const readChapter = () => {
     history.push("/bible");
   };
+
+  const handleFavorite = () => {
+    const verseObj = {
+      abbrev: randomVerse.book.abbrev.pt,
+      name: randomVerse.book.name,
+      chapter: randomVerse.chapter,
+      verse: randomVerse.number
+    }
+    addFavorite(verseObj)
+  }
 
   const getVerseFromStorage = () => {
     return localStorage.getItem("verseOfDay");
@@ -87,15 +98,13 @@ export function WordOfDay() {
 
       <main>
         <PageWrapper secondary>
-          <div>
             <Verse chapterData={randomVerse} versePage={true} />
-          </div>
-          <Navigation />
+          <Navigation />  
         </PageWrapper>
 
         <BtnContainer>
-          <ExtraBtn>Adicionar aos favoritos</ExtraBtn>
-          <ExtraBtn readChapter={readChapter}>Ler capítulo</ExtraBtn>
+          <ExtraBtn clickFunction={handleFavorite}>Adicionar aos favoritos</ExtraBtn>
+          <ExtraBtn clickFunction={readChapter}>Ler capítulo</ExtraBtn>
         </BtnContainer>
       </main>
     </>

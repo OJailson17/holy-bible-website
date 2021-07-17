@@ -46,6 +46,6 @@ const Button = styled.button`
   }
 `;
 
-export function ExtraBtn({ children, readChapter }) {
-  return <Button onClick={readChapter}>{children}</Button>;
+export function ExtraBtn({ children, clickFunction }) {
+  return <Button onClick={clickFunction}>{children}</Button>;
 }

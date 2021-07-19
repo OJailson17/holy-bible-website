@@ -15,6 +15,7 @@ export const BibleContext = ({ children }) => {
   const [newTestament, setNewTestament] = useState([]);
   const [oldTestament, setOldTestament] = useState([]);
 
+
   // Get books data
   const getBooks = async () => {
     const response = await fetch(

@@ -1,0 +1,124 @@
+{
+    "A": [
+        {
+            "title": "A Palavra",
+            "Verses": [
+                {
+                    "book": "2 Timóteo",
+                    "chapter": "2",
+                    "number": "15",
+                    "verse": [
+                        {
+                            "number": "15",
+                            "text": "Procura apresentar-te a Deus aprovado, como obreiro que não tem de que se envergonhar, que maneja bem a palavra da verdade."
+                        }
+                    ]
+                },
+                {
+                    "book": "Mateus",
+                    "chapter": "24",
+                    "number": "35",
+                    "verse": [
+                        {
+                            "number": "35",
+                            "text": "O céu e a terra passarão, mas as minhas palavras não hão de passar."
+                        }
+                    ]
+                },
+                {
+                    "book": "1 Pedro",
+                    "chapter": "2",
+                    "number": "2",
+                    "verse": [
+                        {
+                            "number": "2",
+                            "text": "Desejai afetuosamente, como meninos novamente nascidos, o leite racional, não falsificado, para que por ele vades crescendo;"
+                        }
+                    ]
+                },
+                {
+                    "book": "João",
+                    "chapter": "6",
+                    "number": "63",
+                    "verse": [
+                        {
+                            "number": "63",
+                            "text": "O espírito é o que vivifica, a carne para nada aproveita; as palavras que eu vos digo são espírito e vida."
+                        }
+                    ]
+                },
+                {
+                    "book": "João",
+                    "chapter": "1",
+                    "number": "1, 14",
+                    "verse": [
+                        {
+                            "number": "1",
+                            "text": "No princípio era o Verbo, e o Verbo estava com Deus, e o Verbo era Deus."
+                        },
+                        {
+                            "number": "14",
+                            "text": "E o Verbo se fez carne, e habitou entre nós, e vimos a sua glória, como a glória do unigênito do Pai, cheio de graça e de verdade."
+                        }
+                    ]
+                },
+                {
+                    "book": "Salmos",
+                    "chapter": "119",
+                    "number": "11",
+                    "verse": [
+                        {
+                            "number": "11",
+                            "text": "Escondi a tua palavra no meu coração, para eu não pecar contra ti."
+                        }
+                    ]
+                },
+                {
+                    "book": "João",
+                    "chapter": "15",
+                    "number": "3",
+                    "verse": [
+                        {
+                            "number": "3",
+                            "text": "Vós já estais limpos, pela palavra que vos tenho falado."
+                        }
+                    ]
+                },
+                {
+                    "book": "Salmos",
+                    "chapter": "119",
+                    "number": "130",
+                    "verse": [
+                        {
+                            "number": "130",
+                            "text": "A entrada das tuas palavras dá luz, dá entendimento aos símplices."
+                        }
+                    ]
+                },
+                {
+                    "book": "Mateus",
+                    "chapter": "4",
+                    "number": "4",
+                    "verse": [
+                        {
+                            "number": "4",
+                            "text": "Ele, porém, respondendo, disse: Está escrito: Nem só de pão viverá o homem, mas de toda a palavra que sai da boca de Deus."
+                        }
+                    ]
+                },
+                {
+                    "book": "Hebreus",
+                    "chapter": "4",
+                    "number": "12",
+                    "verse": [
+                        {
+                            "number": "12",
+                            "text": "Porque a palavra de Deus é viva e eficaz, e mais penetrante do que espada alguma de dois gumes, e penetra até à divisão da alma e do espírito, e das juntas e medulas, e é apta para discernir os pensamentos e intenções do coração."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

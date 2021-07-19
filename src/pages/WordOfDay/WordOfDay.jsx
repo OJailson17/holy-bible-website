@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
 import { addFavorite } from "../../components/helper/addFavorite";
-import { checkFavoriteList } from "../../components/helper/checkFavoriteList";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { PageTitle } from "../../components/Title/PageTitle";
@@ -30,8 +29,7 @@ const SubtitleContainer = styled.div`
 
 export function WordOfDay() {
   const [randomVerse, setRandomVerse] = useState({});
-  const [isFavorite, setIsFavorite] = useState(false)
-  const {setBook} = useContext(BibleContextProvider)
+  const { setBook } = useContext(BibleContextProvider);
 
   const history = useHistory();
 
@@ -43,13 +41,12 @@ export function WordOfDay() {
     abbrev: randomVerse?.book?.abbrev?.pt,
     name: randomVerse?.book?.name,
     chapter: randomVerse?.chapter,
-    verse: randomVerse?.number
-  }
+    verse: randomVerse?.number,
+  };
 
   const handleFavorite = () => {
-    addFavorite(verseObj)
-    setIsFavorite(!isFavorite)
-  }
+    addFavorite(verseObj);
+  };
 
   const getVerseFromStorage = () => {
     return localStorage.getItem("verseOfDay");
@@ -88,14 +85,9 @@ export function WordOfDay() {
   }, []);
 
   useEffect(() => {
-    setBook(randomVerse?.book?.abbrev?.pt)
-    checkFavoriteList(verseObj) ? setIsFavorite(true) : setIsFavorite(false)
-  }, [randomVerse])
+    setBook(randomVerse?.book?.abbrev?.pt);
+  }, [randomVerse]);
 
-  // useEffect(() => {
-  // }, [randomVerse])
-
-  
   return (
     <>
       <PageTitle />
@@ -106,12 +98,14 @@ export function WordOfDay() {
 
       <main>
         <PageWrapper secondary>
-            <Verse chapterData={randomVerse} versePage={true} />
-          <Navigation />  
+          <Verse chapterData={randomVerse} versePage={true} />
+          <Navigation />
         </PageWrapper>
 
         <BtnContainer>
-          <ExtraBtn clickFunction={handleFavorite}>{isFavorite ? "Remover dos Favorito" : "Adicionar aos favoritos"}</ExtraBtn>
+          <ExtraBtn clickFunction={handleFavorite}>
+            Adicionar aos favoritos
+          </ExtraBtn>
           <ExtraBtn clickFunction={readChapter}>Ler capítulo</ExtraBtn>
         </BtnContainer>
       </main>

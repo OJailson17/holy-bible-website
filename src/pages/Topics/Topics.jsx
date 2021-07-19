@@ -7,6 +7,9 @@ import { PageTitle } from "../../components/Title/PageTitle";
 import { BtnContainer} from "../../components/BtnContainer/BtnContainer";
 
 export function Topics() {
+  const topics = [
+    "Amor",
+  ].sort()
   return (
     <>
       <PageTitle />
@@ -17,14 +20,9 @@ export function Topics() {
 
       <PageWrapper secondary>
       <BtnContainer primary>
-          <Buttons>Gênesis</Buttons>
-          <Buttons>Êxodo</Buttons>
-          <Buttons>Salmos</Buttons>
-          <Buttons>Matheus</Buttons>
-          <Buttons>Apocalipse</Buttons>
-          <Buttons>Provérbios</Buttons>
-          <Buttons>João</Buttons>
-          <Buttons>Pedro</Buttons>
+      {topics.map(topic => (
+          <Buttons key={topic}>{topic}</Buttons>
+      ))}
       </BtnContainer>
       <Navigation />
       </PageWrapper>

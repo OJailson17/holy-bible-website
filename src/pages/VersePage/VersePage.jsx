@@ -9,13 +9,10 @@ import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { useHistory, useParams } from "react-router-dom";
 import { BibleContextProvider } from "../../context/bibleContext";
 import { addFavorite } from "../../components/helper/addFavorite";
-import { checkFavoriteList } from "../../components/helper/checkFavoriteList";
-import { useState } from "react";
 
 export function VersePage() {
-  const [isFavorite, setIsFavorite] = useState(false)
   const { verseNum, book, chapterNum } = useParams();
-  const { chapterData, verse, setVerseNum } =
+  const { chapterData, verse, setVerseNum} =
     useContext(BibleContextProvider);
     const history = useHistory()
     
@@ -30,19 +27,13 @@ export function VersePage() {
     }
 
     const handleFavorite = () => {
-      addFavorite(verseObj)
-      setIsFavorite(!isFavorite)
+        addFavorite(verseObj)
     }
 
   useEffect(() => {
     setVerseNum(verseNum)
   }, []);
 
-  useEffect(() => {
-    checkFavoriteList(verseObj) ? setIsFavorite(true) : setIsFavorite(false)
-  }, [verse])
-
-console.log(isFavorite);
   return (
     <>
       <PageTitle />
@@ -59,7 +50,7 @@ console.log(isFavorite);
           />
         </PageWrapper>
         <BtnContainer>
-          <ExtraBtn clickFunction={handleFavorite}>{isFavorite ? "Remover dos Favorito" : "Adicionar aos favoritos"}</ExtraBtn>
+          <ExtraBtn clickFunction={handleFavorite}>Adicionar aos favoritos</ExtraBtn>
           <ExtraBtn clickFunction={readChapter}>Ler capítulo</ExtraBtn>
         </BtnContainer>
       </main>

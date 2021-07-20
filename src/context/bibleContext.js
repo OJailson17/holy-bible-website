@@ -15,59 +15,74 @@ export const BibleContext = ({ children }) => {
   const [newTestament, setNewTestament] = useState([]);
   const [oldTestament, setOldTestament] = useState([]);
 
-
   // Get books data
   const getBooks = async () => {
-    const response = await fetch(
-      "https://www.abibliadigital.com.br/api/books",
-      {
-        headers: {
-          Authorization: process.env.REACT_APP_API_TOKEN,
-        },
-      }
-    );
-    const books = await response.json();
-    setBooks(books);
+    try {
+      const response = await fetch(
+        "https://www.abibliadigital.com.br/api/books",
+        {
+          headers: {
+            Authorization: process.env.REACT_APP_API_TOKEN,
+          },
+        }
+      );
+      const books = await response.json();
+      setBooks(books);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getBook = async () => {
-    const response = await fetch(
-      `https://www.abibliadigital.com.br/api/books/${book}`,
-      {
-        headers: {
-          Authorization: process.env.REACT_APP_API_TOKEN,
-        },
-      }
-    );
+    try {
+      const response = await fetch(
+        `https://www.abibliadigital.com.br/api/books/${book}`,
+        {
+          headers: {
+            Authorization: process.env.REACT_APP_API_TOKEN,
+          },
+        }
+      );
 
-    const bookData = await response.json();
-    setQtdChapter(bookData?.chapters);
+      const bookData = await response.json();
+      setQtdChapter(bookData?.chapters);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getChapterData = async () => {
-    const response = await fetch(
-      `https://www.abibliadigital.com.br/api/verses/acf/${book}/${chapter}`,
-      {
-        headers: {
-          Authorization: process.env.REACT_APP_API_TOKEN,
-        },
-      }
-    );
-    const chapterData = await response.json();
-    setChapterData(chapterData);
+    try {
+      const response = await fetch(
+        `https://www.abibliadigital.com.br/api/verses/acf/${book}/${chapter}`,
+        {
+          headers: {
+            Authorization: process.env.REACT_APP_API_TOKEN,
+          },
+        }
+      );
+      const chapterData = await response.json();
+      setChapterData(chapterData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getVerse = async () => {
-    const response = await fetch(
-      `https://www.abibliadigital.com.br/api/verses/acf/${book}/${chapter}/${verseNum}`,
-      {
-        headers: {
-          Authorization: process.env.REACT_APP_API_TOKEN,
-        },
-      }
-    );
-    const verseObj = await response.json();
-    setVerse(verseObj);
+    try {
+      const response = await fetch(
+        `https://www.abibliadigital.com.br/api/verses/acf/${book}/${chapter}/${verseNum}`,
+        {
+          headers: {
+            Authorization: process.env.REACT_APP_API_TOKEN,
+          },
+        }
+      );
+      const verseObj = await response.json();
+      setVerse(verseObj);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getTestaments = () => {

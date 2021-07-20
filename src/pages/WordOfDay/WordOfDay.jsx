@@ -53,17 +53,21 @@ export function WordOfDay() {
   };
 
   const getRandomVerse = async () => {
-    const response = await fetch(
-      "https://www.abibliadigital.com.br/api/verses/acf/random",
-      {
-        headers: {
-          Authorization: process.env.REACT_APP_API_TOKEN,
-        },
-      }
-    );
-    const verse = await response.json();
-    setRandomVerse(verse);
-    localStorage.setItem("verseOfDay", JSON.stringify(verse));
+    try {
+      const response = await fetch(
+        "https://www.abibliadigital.com.br/api/verses/acf/random",
+        {
+          headers: {
+            Authorization: process.env.REACT_APP_API_TOKEN,
+          },
+        }
+      );
+      const verse = await response.json();
+      setRandomVerse(verse);
+      localStorage.setItem("verseOfDay", JSON.stringify(verse));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const checkDate = () => {

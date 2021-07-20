@@ -5,11 +5,24 @@ import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { Subtitle } from "../../components/Subtitle/Subtitle";
 import { PageTitle } from "../../components/Title/PageTitle";
 import { BtnContainer} from "../../components/BtnContainer/BtnContainer";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export function Topics() {
-  const topics = [
-    "Amor",
-  ].sort()
+  const [topics, setTopics] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("TopicsData.json")
+        const topicsData = await response.json()
+        setTopics(topicsData)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData()
+  }, [])
   return (
     <>
       <PageTitle />
@@ -20,8 +33,8 @@ export function Topics() {
 
       <PageWrapper secondary>
       <BtnContainer primary>
-      {topics.map(topic => (
-          <Buttons key={topic}>{topic}</Buttons>
+      {topics?.map(topic => (
+          <Buttons key={topic?.title}>{topic?.title}</Buttons>
       ))}
       </BtnContainer>
       <Navigation />

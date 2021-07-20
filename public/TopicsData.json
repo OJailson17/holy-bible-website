@@ -3,7 +3,7 @@
         "title": "Se sentindo chateado?",
         "book": {
             "name": "João",
-            "abbrev": null
+            "abbrev": "jo"
         },
         "chapter": "14",
         "number": null,
@@ -1264,7 +1264,10 @@
     },
     {
         "title": "Desanimado com o trabalho?",
-        "book": "Salmos",
+        "book": {
+          "name": "Salmos",
+          "abbrev": "sl"
+        },
         "chapter": "126",
         "verses": [
             {

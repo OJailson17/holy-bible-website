@@ -11,27 +11,30 @@ import { BibleContextProvider } from "../../context/bibleContext";
 import { addFavorite } from "../../components/helper/addFavorite";
 
 export function VersePage() {
-  const { verseNum, book, chapterNum } = useParams();
-  const { chapterData, verse, setVerseNum} =
-    useContext(BibleContextProvider);
-    const history = useHistory()
-    
-    const readChapter = () => {
-      history.push("/bible")
-    }
-    const verseObj = {
-      abbrev: book,
-      name: verse?.book?.name,
-      chapter: chapterNum,
-      verse: verseNum
-    }
+  const { verseNum } = useParams();
+  const {
+    chapterData,
+    verse,
+    setVerseNum,
+    isFavorite,
+    setIsFavorite,
+    verseObj,
+  } = useContext(BibleContextProvider);
+  const history = useHistory();
 
-    const handleFavorite = () => {
-        addFavorite(verseObj)
+  const readChapter = () => {
+    history.push("/bible");
+  };
+
+  const handleFavorite = () => {
+    if (!isFavorite) {
+      addFavorite(verseObj);
+      setIsFavorite(true);
     }
+  };
 
   useEffect(() => {
-    setVerseNum(verseNum)
+    setVerseNum(verseNum);
   }, []);
 
   return (
@@ -40,9 +43,9 @@ export function VersePage() {
 
       <main>
         <PageWrapper secondary>
-        <div style={{width: "100%"}}>
-          <Verse chapterData={verse} versePage={true} />
-        </div>
+          <div style={{ width: "100%" }}>
+            <Verse chapterData={verse} versePage={true} />
+          </div>
           <NumberNavigation
             title="Versiculos"
             numbers={chapterData?.chapter?.verses}
@@ -50,7 +53,9 @@ export function VersePage() {
           />
         </PageWrapper>
         <BtnContainer>
-          <ExtraBtn clickFunction={handleFavorite}>Adicionar aos favoritos</ExtraBtn>
+          <ExtraBtn clickFunction={handleFavorite}>
+            {isFavorite ? "Remover dos favoitos" : "Adicionar aos favoritos"}
+          </ExtraBtn>
           <ExtraBtn clickFunction={readChapter}>Ler capítulo</ExtraBtn>
         </BtnContainer>
       </main>

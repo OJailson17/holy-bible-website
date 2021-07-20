@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useState } from "react";
+import { checkFavoriteList } from "../components/helper/checkFavoriteList";
 
 export const BibleContextProvider = createContext();
 
@@ -14,6 +15,9 @@ export const BibleContext = ({ children }) => {
   const [qtdverse, setQtdVerse] = useState("");
   const [newTestament, setNewTestament] = useState([]);
   const [oldTestament, setOldTestament] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(false)
+  const [verseObj, setVerseObj] = useState({});
+
 
   // Get books data
   const getBooks = async () => {
@@ -78,8 +82,8 @@ export const BibleContext = ({ children }) => {
           },
         }
       );
-      const verseObj = await response.json();
-      setVerse(verseObj);
+      const verseData = await response.json();
+      setVerse(verseData);
     } catch (error) {
       console.log(error);
     }
@@ -116,6 +120,28 @@ export const BibleContext = ({ children }) => {
   useEffect(() => {
     getVerse();
   }, [verseNum]);
+  
+  useEffect(() => {
+    const obj = {
+      abbrev: book,
+      name: verse?.book?.name,
+      chapter: Number(chapter),
+      verse: Number(verseNum),
+    }
+    
+    if(obj.name !== undefined) {
+      setVerseObj(obj)
+    }
+  }, [verse || verseNum])
+
+
+  useEffect(() => {
+  if(checkFavoriteList(verseObj)) {
+    setIsFavorite(true)
+  } else {
+    setIsFavorite(false)
+  }
+  }, [verseObj])
 
   return (
     <BibleContextProvider.Provider
@@ -136,6 +162,10 @@ export const BibleContext = ({ children }) => {
         setVerse,
         verseNum,
         setVerseNum,
+        isFavorite,
+        setIsFavorite,
+        verseObj,
+        setVerseObj
       }}
     >
       {children}

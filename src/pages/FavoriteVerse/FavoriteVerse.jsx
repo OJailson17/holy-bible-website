@@ -82,7 +82,6 @@ export function FavoriteVerse() {
     setFavorites(favoriteList)
   }, [])
 
-  // console.log(favorites);
   return (
     <>
       <PageTitle />

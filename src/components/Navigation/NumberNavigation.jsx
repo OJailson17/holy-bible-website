@@ -37,6 +37,7 @@ export function NumberNavigation({ title, versePage }) {
 
   const selectVerses = (e) => {
     setVerseNum(e.target.innerText)
+    console.log(e.target.innerText)
   }
 
   const setQtdValue = () => {
@@ -46,6 +47,7 @@ export function NumberNavigation({ title, versePage }) {
       return qtdChapter
     }
   }
+  
 
   return (
     <NavContainer hidden={width < 1024 ? "hidden" : ""}>

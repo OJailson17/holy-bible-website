@@ -28,7 +28,7 @@ export function Topics() {
       <PageTitle />
 
       <Subtitle>
-        <h2>Temas Bíblicos</h2>
+        <h2>Versículos para cada situação da vida</h2>
       </Subtitle>
 
       <PageWrapper secondary>

@@ -35,7 +35,7 @@ export function Home() {
 
         <TopicWrapper to="/topics">
           <i className="far fa-list-alt"></i>
-          <span>Temas</span>
+          <span>Versículos para vida</span>
         </TopicWrapper>
 
         <TopicWrapper to="/oldtestament">

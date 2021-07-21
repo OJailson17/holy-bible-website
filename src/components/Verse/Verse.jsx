@@ -74,6 +74,7 @@ export function Verse({ chapterData, versePage }) {
             {verses?.map((verse) => (
               <VerseWrapper key={verse?.number}>
                 <span>{verse?.number}</span>
+                {/* Fix book bug in verseTopic Page */}
                 <Link
                   to={`/bible/book/${book?.abbrev?.pt}/chapter/${chapterData?.chapter?.number}/verse/${verse?.number}`}
                 >

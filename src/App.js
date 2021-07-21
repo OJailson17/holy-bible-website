@@ -6,6 +6,7 @@ import { NewTestament } from './pages/NewTestament/NewTestament';
 import { OldTestament } from './pages/OldTestament/OldTestament';
 import { Topics } from './pages/Topics/Topics';
 import { VersePage } from './pages/VersePage/VersePage';
+import { VerseTopic } from './pages/VerseTopic/VerseTopic';
 import { WordOfDay } from './pages/WordOfDay/WordOfDay';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     <Route exact path="/bible/book/:book/chapter/:chapterNum/verse/:verseNum/" component={VersePage} />
     <Route exact path="/wordofday" component={WordOfDay} />
     <Route exact path="/topics" component={Topics} />
+    <Route exact path="/topics/verse" component={VerseTopic} />
     <Route exact path="/newtestament" component={NewTestament} />
     <Route exact path="/oldtestament" component={OldTestament} />
     <Route exact path="/favorites" component={FavoriteVerse} />

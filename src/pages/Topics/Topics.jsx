@@ -7,9 +7,14 @@ import { PageTitle } from "../../components/Title/PageTitle";
 import { BtnContainer} from "../../components/BtnContainer/BtnContainer";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { BibleContextProvider } from "../../context/bibleContext";
+import { useHistory } from "react-router-dom";
 
 export function Topics() {
   const [topics, setTopics] = useState([])
+  const {setVerseTopic} = useContext(BibleContextProvider)
+  const history = useHistory()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +28,12 @@ export function Topics() {
     }
     fetchData()
   }, [])
+
+  const handleClick = (topic) => {
+    setVerseTopic(topic)
+
+    history.push("/topics/verse")
+  }
   return (
     <>
       <PageTitle />
@@ -34,7 +45,7 @@ export function Topics() {
       <PageWrapper secondary>
       <BtnContainer primary>
       {topics?.map(topic => (
-          <Buttons key={topic?.title}>{topic?.title}</Buttons>
+          <Buttons key={topic?.title} handleClick={() => handleClick(topic)}>{topic?.title}</Buttons>
       ))}
       </BtnContainer>
       <Navigation />

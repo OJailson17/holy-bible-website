@@ -17,6 +17,7 @@ export const BibleContext = ({ children }) => {
   const [oldTestament, setOldTestament] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false)
   const [verseObj, setVerseObj] = useState({});
+  const [verseTopic, setVerseTopic] = useState({})
 
 
   // Get books data
@@ -143,6 +144,7 @@ export const BibleContext = ({ children }) => {
   }
   }, [verseObj])
 
+
   return (
     <BibleContextProvider.Provider
       value={{
@@ -165,7 +167,9 @@ export const BibleContext = ({ children }) => {
         isFavorite,
         setIsFavorite,
         verseObj,
-        setVerseObj
+        setVerseObj,
+        verseTopic,
+        setVerseTopic
       }}
     >
       {children}

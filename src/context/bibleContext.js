@@ -106,7 +106,6 @@ export const BibleContext = ({ children }) => {
 
   useEffect(() => {
     getChapterData();
-    console.log(chapter);
   }, [chapter]);
 
   useEffect(() => {

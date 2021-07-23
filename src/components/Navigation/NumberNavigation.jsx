@@ -37,7 +37,6 @@ export function NumberNavigation({ title, versePage }) {
 
   const selectVerses = (e) => {
     setVerseNum(e.target.innerText)
-    console.log(e.target.innerText)
   }
 
   const setQtdValue = () => {

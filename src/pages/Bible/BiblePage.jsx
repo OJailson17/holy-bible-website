@@ -26,20 +26,22 @@ export function BiblePage() {
   }, []);
 
   const nextChapter = () => {
-    if (Number(chapter) === Number(qtdChapter)) {
+    const chapterNum = Number(chapter)
+    if (chapterNum === qtdChapter) {
       setIsDisable(true);
     } else {
-      setChapter(chapter + 1);
+      setChapter(chapterNum + 1);
       window.scrollTo(0, 0);
     }
     setIsDisable(false);
   };
 
   const prevChapter = () => {
-    if (Number(chapter) - 1 < 1) {
+    const chapterNum = Number(chapter)
+    if (chapterNum - 1 < 1) {
       setIsDisable(true);
     } else {
-      setChapter(chapter - 1);
+      setChapter(chapterNum - 1);
       window.scrollTo(0, 0);
     }
     setIsDisable(false);

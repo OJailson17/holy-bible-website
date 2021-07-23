@@ -10,6 +10,6 @@ const PageContainer = styled.div`
   /* background-color: green; */
 `;
 
-export function PageWrapper({ children, secondary, id }) {
-  return <PageContainer id={id} secondary={secondary}>{children}</PageContainer>;
+export function PageWrapper({ children, secondary }) {
+  return <PageContainer secondary={secondary}>{children}</PageContainer>;
 }

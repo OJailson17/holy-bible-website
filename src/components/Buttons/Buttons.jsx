@@ -71,6 +71,6 @@ const Btn = styled.button`
     `}
 `;
 
-export function Buttons({ children, secondary, handleClick }) {
-  return <Btn secondary={secondary} onClick={handleClick}>{children}</Btn>;
+export function Buttons({ children, secondary, handleClick, dataValue }) {
+  return <Btn secondary={secondary} onClick={handleClick} data-abbrev={dataValue}>{children}</Btn>;
 }

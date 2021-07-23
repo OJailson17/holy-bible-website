@@ -101,7 +101,7 @@ export const BibleContext = ({ children }) => {
   useEffect(() => {
     getBooks();
     setBook("gn");
-    setChapter(1);
+    if(!chapter) setChapter(1);
   }, []);
 
   useEffect(() => {
@@ -110,7 +110,7 @@ export const BibleContext = ({ children }) => {
 
   useEffect(() => {
     getBook();
-    setChapter(1);
+    if(!chapter) setChapter(1);
     getChapterData();
   }, [book]);
 

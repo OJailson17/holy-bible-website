@@ -11,7 +11,7 @@ const Btn = styled.button`
   font-size: 17px;
   font-weight: 500;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 
   i {
     color: black;
@@ -54,12 +54,19 @@ const Btn = styled.button`
 
         .text {
           width: 90%;
+          height: 50px;
           cursor: pointer;
           text-align: left;
+          display: flex;
+          align-items: center;
         }
 
         .deleteIcon {
           width: 10%;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           cursor: pointer;
         }
 
@@ -71,6 +78,10 @@ const Btn = styled.button`
     `}
 `;
 
-export function Buttons({ children, secondary, handleClick, dataValue }) {
-  return <Btn secondary={secondary} onClick={handleClick} data-abbrev={dataValue}>{children}</Btn>;
+export function Buttons({ children, secondary, handleClick }) {
+  return (
+    <Btn secondary={secondary} onClick={handleClick}>
+      {children}
+    </Btn>
+  );
 }

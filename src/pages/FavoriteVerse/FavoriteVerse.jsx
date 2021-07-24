@@ -9,6 +9,7 @@ import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { Subtitle } from "../../components/Subtitle/Subtitle";
 import { PageTitle } from "../../components/Title/PageTitle";
 import { BibleContextProvider } from "../../context/bibleContext";
+import { removeFavorite } from "../../components/helper/removeFavorite";
 
 const FavoriteBtn = styled.div`
   margin-top: 30px;
@@ -19,7 +20,7 @@ const FavoriteBtn = styled.div`
   align-items: center;
   position: relative;
 
-  & > button{
+  & > button {
     font-size: 16px;
     background: transparent;
     height: 30px;
@@ -31,14 +32,14 @@ const FavoriteBtn = styled.div`
     border: none;
     border-radius: 5px;
     transition: 0.3s;
-    
+
     i {
       color: black;
       font-size: 18px;
       margin-left: 10px;
       margin-right: 3px;
     }
-    
+
     a {
       display: flex;
       flex-direction: row-reverse;
@@ -84,38 +85,55 @@ const FavoriteBtn = styled.div`
 
 export function FavoriteVerse() {
   const [favorites, setFavorites] = useState([]);
-  const {setBook, setChapter} = useContext(BibleContextProvider)
-  const history = useHistory()
+  const { setBook, setChapter } = useContext(BibleContextProvider);
+  const history = useHistory();
 
-  useEffect(() => {
+
+  const getfavoriteList = () => {
     const favoriteList = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavorites(favoriteList);
-  }, []);
+  };
 
   const handleClick = (e) => {
-    const text = e.target.innerText
-    const splitText = text.split(" ")
+    const text = e.target.innerText;
+    const splitText = text.split(" ");
     let data;
-    if(splitText.length > 2) {
-      data = splitText[2].split(":")
+    if (splitText.length > 2) {
+      data = splitText[2].split(":");
     } else if (splitText.length > 3) {
-      data = splitText[3].split(":")
+      data = splitText[3].split(":");
     } else {
-      data = splitText[1].split(":")
+      data = splitText[1].split(":");
     }
-    const chapterValue = data[0]
-    const verseValue = data[1]
-    const bookValue = e.target.dataset.abbrev
+    const chapterValue = data[0];
+    const verseValue = data[1];
+    const bookValue = e.target.dataset.abbrev;
     console.log(data);
-    
-    setBook(bookValue)
-    setChapter(chapterValue)
-    history.push(`/bible/book/${bookValue}/chapter/${chapterValue}/verse/${verseValue}/`)
-  }
+
+    setBook(bookValue);
+    setChapter(chapterValue);
+    history.push(
+      `/bible/book/${bookValue}/chapter/${chapterValue}/verse/${verseValue}/`
+    );
+  };
 
   const deleteFavorite = (e) => {
     console.log(e);
-  }
+    const base = e.target.dataset;
+    const obj = {
+      name: base.name,
+      chapter: Number(base.chapter),
+      verse: Number(base.verse),
+    };
+
+    removeFavorite(obj);
+    getfavoriteList()
+  };
+
+
+  useEffect(() => {
+    getfavoriteList()
+  }, []);
 
   return (
     <>
@@ -129,29 +147,42 @@ export function FavoriteVerse() {
         <FavoriteBtn>
           <button>
             <Link to="/bible">
-            <i className="fas fa-plus-circle"></i>
-            <span>Adicionar Favorito</span>
+              <i className="fas fa-plus-circle"></i>
+              <span>Adicionar Favorito</span>
             </Link>
           </button>
         </FavoriteBtn>
         <PageWrapper secondary>
           <BtnContainer primary>
             {favorites?.map((favorite) => (
-                <Buttons
-                  secondary
-                  key={`${favorite?.chapter}: ${favorite?.verse}`}
-                  handleClick={handleClick}
-                  dataValue={favorite?.abbrev}
-                >
-                  <div>
-                    <div className="text" data-abbrev={favorite.abbrev}>
-                      {favorite?.name} {favorite?.chapter}:{favorite?.verse}
-                    </div>
-                    <div className="deleteIcon" onClick={deleteFavorite}>
-                      <i className="fas fa-trash"></i>
-                    </div>
+              <Buttons
+                secondary
+                key={`${favorite?.chapter}: ${favorite?.verse}`}
+              >
+                <div>
+                  <div
+                    className="text"
+                    data-abbrev={favorite.abbrev}
+                    onClick={handleClick}
+                  >
+                    {favorite?.name} {favorite?.chapter}:{favorite?.verse}
                   </div>
-                </Buttons>
+                  <div
+                    className="deleteIcon"
+                    data-name={favorite?.name}
+                    data-chapter={favorite?.chapter}
+                    data-verse={favorite?.verse}
+                    onClick={deleteFavorite}
+                  >
+                    <i
+                      className="fas fa-trash"
+                      data-name={favorite?.name}
+                      data-chapter={favorite?.chapter}
+                      data-verse={favorite?.verse}
+                    ></i>
+                  </div>
+                </div>
+              </Buttons>
             ))}
           </BtnContainer>
           <Navigation />

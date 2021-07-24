@@ -8,7 +8,7 @@ import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
 import { addFavorite } from "../../components/helper/addFavorite";
 import { checkFavoriteList } from "../../components/helper/checkFavoriteList";
-// import { removeFavorite } from "../../components/helper/removeFavorite";
+import { removeFavorite } from "../../components/helper/removeFavorite";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { PageTitle } from "../../components/Title/PageTitle";
@@ -51,6 +51,9 @@ export function WordOfDay() {
     if (!isFavorite) {
       addFavorite(verseObj);
       setIsFavorite(true);
+    } else {
+      removeFavorite(verseObj)
+      setIsFavorite(false)
     }
   };
 
@@ -103,8 +106,6 @@ export function WordOfDay() {
       setIsFavorite(false);
     }
   }, [randomVerse]);
-
-  console.log(randomVerse);
 
   return (
     <>

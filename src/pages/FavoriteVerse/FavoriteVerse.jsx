@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { Buttons } from "../../components/Buttons/Buttons";
@@ -19,12 +19,10 @@ const FavoriteBtn = styled.div`
   align-items: center;
   position: relative;
 
-  & > button {
+  & > button{
     font-size: 16px;
     background: transparent;
     height: 30px;
-    display: flex;
-    flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -33,12 +31,18 @@ const FavoriteBtn = styled.div`
     border: none;
     border-radius: 5px;
     transition: 0.3s;
-
+    
     i {
       color: black;
       font-size: 18px;
       margin-left: 10px;
       margin-right: 3px;
+    }
+    
+    a {
+      display: flex;
+      flex-direction: row-reverse;
+      color: black;
     }
 
     span {
@@ -50,6 +54,10 @@ const FavoriteBtn = styled.div`
       color: white;
 
       i {
+        color: white;
+      }
+
+      a {
         color: white;
       }
     }
@@ -90,16 +98,23 @@ export function FavoriteVerse() {
     let data;
     if(splitText.length > 2) {
       data = splitText[2].split(":")
+    } else if (splitText.length > 3) {
+      data = splitText[3].split(":")
     } else {
       data = splitText[1].split(":")
     }
     const chapterValue = data[0]
     const verseValue = data[1]
     const bookValue = e.target.dataset.abbrev
+    console.log(data);
     
     setBook(bookValue)
     setChapter(chapterValue)
     history.push(`/bible/book/${bookValue}/chapter/${chapterValue}/verse/${verseValue}/`)
+  }
+
+  const deleteFavorite = (e) => {
+    console.log(e);
   }
 
   return (
@@ -113,8 +128,10 @@ export function FavoriteVerse() {
 
         <FavoriteBtn>
           <button>
+            <Link to="/bible">
             <i className="fas fa-plus-circle"></i>
             <span>Adicionar Favorito</span>
+            </Link>
           </button>
         </FavoriteBtn>
         <PageWrapper secondary>
@@ -130,7 +147,7 @@ export function FavoriteVerse() {
                     <div className="text" data-abbrev={favorite.abbrev}>
                       {favorite?.name} {favorite?.chapter}:{favorite?.verse}
                     </div>
-                    <div className="deleteIcon">
+                    <div className="deleteIcon" onClick={deleteFavorite}>
                       <i className="fas fa-trash"></i>
                     </div>
                   </div>

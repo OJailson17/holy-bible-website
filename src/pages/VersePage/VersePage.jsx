@@ -9,6 +9,7 @@ import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { useHistory, useParams } from "react-router-dom";
 import { BibleContextProvider } from "../../context/bibleContext";
 import { addFavorite } from "../../components/helper/addFavorite";
+import { removeFavorite } from "../../components/helper/removeFavorite";
 
 export function VersePage() {
   const { verseNum } = useParams();
@@ -26,10 +27,18 @@ export function VersePage() {
     history.push("/bible");
   };
 
-  const handleFavorite = () => {
+  const handleFavorite = (e) => {
+    console.log(verse);
     if (!isFavorite) {
       addFavorite(verseObj);
       setIsFavorite(true);
+    } else {
+      removeFavorite({
+        name: verse?.book?.name,
+        chapter: verse?.chapter,
+        verse: verse?.number
+      })
+      setIsFavorite(false)
     }
   };
 

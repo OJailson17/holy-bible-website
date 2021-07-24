@@ -8,6 +8,7 @@ import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
 import { addFavorite } from "../../components/helper/addFavorite";
 import { checkFavoriteList } from "../../components/helper/checkFavoriteList";
+// import { removeFavorite } from "../../components/helper/removeFavorite";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { PageTitle } from "../../components/Title/PageTitle";
@@ -92,16 +93,18 @@ export function WordOfDay() {
       getRandomVerse();
     }
   }, []);
-
+  
   useEffect(() => {
     setBook(randomVerse?.book?.abbrev?.pt);
-
+    
     if (checkFavoriteList(verseObj)) {
       setIsFavorite(true);
     } else {
       setIsFavorite(false);
     }
   }, [randomVerse]);
+
+  console.log(randomVerse);
 
   return (
     <>

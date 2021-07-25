@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { BtnContainer } from "../../components/BtnContainer/BtnContainer";
 import { Buttons } from "../../components/Buttons/Buttons";
 import { Navigation } from "../../components/Navigation/Navigation";
@@ -8,7 +9,14 @@ import { PageTitle } from "../../components/Title/PageTitle";
 import { BibleContextProvider } from "../../context/bibleContext";
 
 export function OldTestament() {
-  const {oldTestament} = useContext(BibleContextProvider)
+  const {oldTestament, setBook} = useContext(BibleContextProvider)
+  const history = useHistory()
+
+const handleClick = (e) => {
+  setBook(e.target.dataset.abbrev)
+  history.push(`/bible`)
+  window.scrollTo(0, 0);
+}
 
   return (
     <>
@@ -21,7 +29,7 @@ export function OldTestament() {
       <PageWrapper secondary>
       <BtnContainer primary>
           {oldTestament?.map(book => (
-            <Buttons key={book?.name}>{book?.name}</Buttons>
+            <Buttons key={book?.name} abbrev={book?.abbrev?.pt} handleClick={handleClick}>{book?.name}</Buttons>
           ))}
       </BtnContainer>
       <Navigation />

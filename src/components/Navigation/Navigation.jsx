@@ -34,9 +34,6 @@ export function Navigation({ primary }) {
     <>
       <LinkList hidden={width < 1024 ? "hidden" : ""} primary={primary}>
         <li>
-          <Link to="/topics">Temas</Link>
-        </li>
-        <li>
           <Link to="/wordofday">Palavra do dia</Link>
         </li>
         <li>
@@ -50,6 +47,9 @@ export function Navigation({ primary }) {
         </li>
         <li>
           <Link to="/favorites">Versículos Favoritos</Link>
+        </li>
+        <li>
+          <Link to="/topics">Versículos para vida</Link>
         </li>
       </LinkList>
     </>

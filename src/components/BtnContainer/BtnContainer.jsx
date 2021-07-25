@@ -9,21 +9,25 @@ const BtnWrapper = styled.div`
 
   @media ${({ theme }) => theme.queries.medium} {
     width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
   @media ${({ theme }) => theme.queries.big} {
     width: 60%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
   @media ${({ theme }) => theme.queries.large} {
     width: 75%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
   @media ${({ theme }) => theme.queries.xlarge} {
     width: 70%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }

@@ -17,6 +17,10 @@ const Btn = styled.button`
     color: black;
   }
 
+  a {
+    color: black;
+  }
+
   &:hover {
     color: white;
     background: black;
@@ -78,10 +82,10 @@ const Btn = styled.button`
     `}
 `;
 
-export function Buttons({ children, secondary, handleClick }) {
+export function Buttons(props) {
   return (
-    <Btn secondary={secondary} onClick={handleClick}>
-      {children}
+    <Btn secondary={props.secondary} onClick={props.handleClick} data-abbrev={props.abbrev}>
+      {props.children}
     </Btn>
   );
 }

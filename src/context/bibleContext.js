@@ -169,7 +169,7 @@ export const BibleContext = ({ children }) => {
         verseObj,
         setVerseObj,
         verseTopic,
-        setVerseTopic
+        setVerseTopic,
       }}
     >
       {children}

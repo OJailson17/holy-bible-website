@@ -10,9 +10,11 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { BibleContextProvider } from "../../context/bibleContext";
 import { useHistory } from "react-router-dom";
+import { Loader } from "../../components/Loader/Loader";
 
 export function Topics() {
   const [topics, setTopics] = useState([])
+  const [isReady, setIsReady] = useState(false);
   const {setVerseTopic} = useContext(BibleContextProvider)
   const history = useHistory()
 
@@ -28,6 +30,10 @@ export function Topics() {
     }
     fetchData()
   }, [])
+  
+  useEffect(() => {
+    if(topics.length > 0) setIsReady(true)
+  }, [topics])
 
   const handleClick = (topic) => {
     setVerseTopic(topic)
@@ -43,11 +49,15 @@ export function Topics() {
       </Subtitle>
 
       <PageWrapper secondary>
-      <BtnContainer primary>
+      {isReady ? (
+        <BtnContainer primary>
       {topics?.map(topic => (
           <Buttons key={topic?.title} handleClick={() => handleClick(topic)}>{topic?.title}</Buttons>
       ))}
       </BtnContainer>
+      ) : (
+        <Loader isReady={!isReady} />
+      )}
       <Navigation />
       </PageWrapper>
     </>

@@ -108,7 +108,6 @@ export function FavoriteVerse() {
     const chapterValue = data[0];
     const verseValue = data[1];
     const bookValue = e.target.dataset.abbrev;
-    console.log(data);
 
     setBook(bookValue);
     setChapter(chapterValue);
@@ -118,7 +117,6 @@ export function FavoriteVerse() {
   };
 
   const deleteFavorite = (e) => {
-    console.log(e);
     const base = e.target.dataset;
     const obj = {
       name: base.name,

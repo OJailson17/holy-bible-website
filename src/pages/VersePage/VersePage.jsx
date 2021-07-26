@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { PageTitle } from "../../components/Title/PageTitle";
 import { Verse } from "../../components/Verse/Verse";
 import { NumberNavigation } from "../../components/Navigation/NumberNavigation";
@@ -10,6 +10,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { BibleContextProvider } from "../../context/bibleContext";
 import { addFavorite } from "../../components/helper/addFavorite";
 import { removeFavorite } from "../../components/helper/removeFavorite";
+import { Loader } from "../../components/Loader/Loader";
 
 export function VersePage() {
   const { verseNum } = useParams();
@@ -20,15 +21,18 @@ export function VersePage() {
     isFavorite,
     setIsFavorite,
     verseObj,
+    // isReady,
+    // setIsReady
   } = useContext(BibleContextProvider);
   const history = useHistory();
+  const [isReady, setIsReady] = useState(false);
+
 
   const readChapter = () => {
     history.push("/bible");
   };
 
   const handleFavorite = (e) => {
-    console.log(verse);
     if (!isFavorite) {
       addFavorite(verseObj);
       setIsFavorite(true);
@@ -46,8 +50,14 @@ export function VersePage() {
     setVerseNum(verseNum);
   }, []);
 
+  useEffect(() => {
+    if(verse?.book !== undefined) setIsReady(true)
+  }, [verse])
+
   return (
     <>
+    {isReady ? (
+      <>
       <PageTitle />
 
       <main>
@@ -69,5 +79,9 @@ export function VersePage() {
         </BtnContainer>
       </main>
     </>
+    ) : (
+      <Loader isReady={!isReady} />
+    )}
+    </> 
   );
 }

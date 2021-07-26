@@ -9,6 +9,8 @@ import { VersePage } from './pages/VersePage/VersePage';
 import { VerseTopic } from './pages/VerseTopic/VerseTopic';
 import { WordOfDay } from './pages/WordOfDay/WordOfDay';
 
+// !Tentar corrigir bug no mobile, as vezes não carrega
+
 function App() {
   return (
     <Router>

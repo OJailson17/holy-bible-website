@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -46,8 +47,7 @@ const VerseWrapper = styled.div`
 
 export function Verse({ chapterData, versePage }) {
   const { book, chapter, verses } = chapterData;
-
-  console.log()
+  
   return (
     <>
       {versePage ? (

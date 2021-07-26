@@ -15,18 +15,17 @@ import {
   ChangePageContainer,
   PageContainer,
 } from "./BiblePage.style";
+import { Loader } from "../../components/Loader/Loader";
 
 export function BiblePage() {
   const { book, setBook, chapterData, chapter, setChapter, qtdChapter } =
     useContext(BibleContextProvider);
   const [isDisable, setIsDisable] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
-  useEffect(() => {
-    if (!book) setBook("gn");
-  }, []);
-
+  
   const nextChapter = () => {
-    const chapterNum = Number(chapter)
+    const chapterNum = Number(chapter);
     if (chapterNum === qtdChapter) {
       setIsDisable(true);
     } else {
@@ -35,9 +34,9 @@ export function BiblePage() {
     }
     setIsDisable(false);
   };
-
+  
   const prevChapter = () => {
-    const chapterNum = Number(chapter)
+    const chapterNum = Number(chapter);
     if (chapterNum - 1 < 1) {
       setIsDisable(true);
     } else {
@@ -46,38 +45,52 @@ export function BiblePage() {
     }
     setIsDisable(false);
   };
+  
+  useEffect(() => {
+    if (!book) setBook("gn");
+  }, []);
+  
+  useEffect(() => {
+    if(chapterData?.book !== undefined) setIsReady(true)
+  }, [chapterData])
 
   return (
     <>
-      <PageTitle />
+      {isReady ? (
+        <>
+          <PageTitle />
 
-      <main>
-        <PageContainer>
-          <div>
-            <div className="select-container">
-              <SelectBook />
-              <SelectChapter />
-            </div>
+          <main>
+            <PageContainer>
+              <div>
+                <div className="select-container">
+                  <SelectBook />
+                  <SelectChapter />
+                </div>
 
-            <PageWrapper id="start">
-              <Verse chapterData={chapterData} />
-              <ChangePageContainer>
-                <ChangePageBtn onClick={prevChapter} disabled={isDisable}>
-                  Anterior
-                </ChangePageBtn>
-                <ChangePageBtn onClick={nextChapter} disabled={isDisable}>
-                  Próximo
-                </ChangePageBtn>
-              </ChangePageContainer>
-            </PageWrapper>
-          </div>
+                <PageWrapper id="start">
+                  <Verse chapterData={chapterData} />
+                  <ChangePageContainer>
+                    <ChangePageBtn onClick={prevChapter} disabled={isDisable}>
+                      Anterior
+                    </ChangePageBtn>
+                    <ChangePageBtn onClick={nextChapter} disabled={isDisable}>
+                      Próximo
+                    </ChangePageBtn>
+                  </ChangePageContainer>
+                </PageWrapper>
+              </div>
 
-          <div>
-            <NumberNavigation title="Capítulos" />
-            <Navigation primary />
-          </div>
-        </PageContainer>
-      </main>
+              <div>
+                <NumberNavigation title="Capítulos" />
+                <Navigation primary />
+              </div>
+            </PageContainer>
+          </main>
+        </>
+      ) : (
+        <Loader isReady={!isReady} />
+      )}
     </>
   );
 }

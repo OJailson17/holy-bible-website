@@ -9,6 +9,7 @@ import { ExtraBtn } from "../../components/ExtraBtn/ExtraBtn";
 import { addFavorite } from "../../components/helper/addFavorite";
 import { checkFavoriteList } from "../../components/helper/checkFavoriteList";
 import { removeFavorite } from "../../components/helper/removeFavorite";
+import { Loader } from "../../components/Loader/Loader";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { PageTitle } from "../../components/Title/PageTitle";
@@ -31,12 +32,15 @@ const SubtitleContainer = styled.div`
 
 export function WordOfDay() {
   const [randomVerse, setRandomVerse] = useState({});
+  const [isReady, setIsReady] = useState(false);
+
   const { setBook, isFavorite, setIsFavorite } =
     useContext(BibleContextProvider);
 
   const history = useHistory();
 
   const readChapter = () => {
+    setIsReady(false)
     history.push("/bible");
   };
 
@@ -52,8 +56,8 @@ export function WordOfDay() {
       addFavorite(verseObj);
       setIsFavorite(true);
     } else {
-      removeFavorite(verseObj)
-      setIsFavorite(false)
+      removeFavorite(verseObj);
+      setIsFavorite(false);
     }
   };
 
@@ -105,29 +109,38 @@ export function WordOfDay() {
     } else {
       setIsFavorite(false);
     }
+    if(randomVerse?.book !== undefined) setIsReady(true)
   }, [randomVerse]);
 
   return (
     <>
-      <PageTitle />
+      {isReady ? (
+        <>
+          <PageTitle />
 
-      <SubtitleContainer>
-        <h2>Palavra do dia</h2>
-      </SubtitleContainer>
+          <SubtitleContainer>
+            <h2>Palavra do dia</h2>
+          </SubtitleContainer>
 
-      <main>
-        <PageWrapper secondary>
-          <Verse chapterData={randomVerse} versePage={true} />
-          <Navigation />
-        </PageWrapper>
+          <main>
+            <PageWrapper secondary>
+              <Verse chapterData={randomVerse} versePage={true} />
+              <Navigation />
+            </PageWrapper>
 
-        <BtnContainer>
-          <ExtraBtn clickFunction={handleFavorite}>
-            {isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-          </ExtraBtn>
-          <ExtraBtn clickFunction={readChapter}>Ler capítulo</ExtraBtn>
-        </BtnContainer>
-      </main>
+            <BtnContainer>
+              <ExtraBtn clickFunction={handleFavorite}>
+                {isFavorite
+                  ? "Remover dos favoritos"
+                  : "Adicionar aos favoritos"}
+              </ExtraBtn>
+              <ExtraBtn clickFunction={readChapter}>Ler capítulo</ExtraBtn>
+            </BtnContainer>
+          </main>
+        </>
+      ) : (
+        <Loader isReady={!isReady} />
+      )}
     </>
   );
 }

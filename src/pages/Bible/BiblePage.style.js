@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 
 export const PageContainer = styled.div`
-/* background-color: yellow; */
   width: 100%;
   display: flex;
   justify-content: space-between;

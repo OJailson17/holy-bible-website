@@ -21,8 +21,6 @@ export function VersePage() {
     isFavorite,
     setIsFavorite,
     verseObj,
-    // isReady,
-    // setIsReady
   } = useContext(BibleContextProvider);
   const history = useHistory();
   const [isReady, setIsReady] = useState(false);

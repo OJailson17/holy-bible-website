@@ -20,18 +20,18 @@ const Button = styled.button`
 
   @media ${({ theme }) => theme.queries.xsmall} {
     font-size: 14px;
-    width: 70%;
+    width: 49%;
     height: 45px;
   }
 
   @media ${({ theme }) => theme.queries.medium} {
     font-size: 14px;
-    width: 50%;
+    width: 90%;
     height: 45px;
   }
 
   @media ${({ theme }) => theme.queries.big} {
-    width: 60%;
+    width: 70%;
     height: 45px;
   }
 

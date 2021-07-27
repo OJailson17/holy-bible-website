@@ -7,7 +7,6 @@ const PageContainer = styled.div`
   justify-content: space-between;
   margin-top: 32px;
   margin-bottom: 20px;
-  /* background-color: green; */
 `;
 
 export function PageWrapper({ children, secondary }) {

@@ -124,7 +124,9 @@ export function WordOfDay() {
 
           <main>
             <PageWrapper secondary>
+            <div style={{width: "100%"}}>
               <Verse chapterData={randomVerse} versePage={true} />
+            </div>
               <Navigation />
             </PageWrapper>
 

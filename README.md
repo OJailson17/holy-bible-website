@@ -4,11 +4,12 @@ O site foi criado de forma educativa para aperfeiçoamento das minhas habilidade
 
 Todo o conteúdo como livros e versículos foram extraídos da api pública [Bible](https://bibleapi.co/).
 
-### Prévia do projeto
-
-https://bibliasagrada.vercel.app/
 
 ## Tecnologias
 
 * React
 * Styled Components
+
+### Prévia do projeto
+
+https://bibliasagrada.vercel.app/

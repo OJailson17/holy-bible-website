@@ -27,7 +27,7 @@ export function VersePage() {
 
 
   const readChapter = () => {
-    history.push("/bible");
+    history.push("/biblia");
   };
 
   const handleFavorite = (e) => {

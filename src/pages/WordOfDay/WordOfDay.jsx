@@ -41,7 +41,7 @@ export function WordOfDay() {
 
   const readChapter = () => {
     setIsReady(false)
-    history.push("/bible");
+    history.push("/biblia");
   };
 
   const verseObj = {
@@ -102,7 +102,7 @@ export function WordOfDay() {
   }, []);
   
   useEffect(() => {
-    setBook(randomVerse?.book?.abbrev?.pt);
+    if(randomVerse?.book !== undefined) setBook(randomVerse?.book?.abbrev?.pt);
     
     if (checkFavoriteList(verseObj)) {
       setIsFavorite(true);

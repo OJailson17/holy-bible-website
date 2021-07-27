@@ -57,7 +57,7 @@ export function Verse({ chapterData, versePage }) {
             <VerseWrapper>
               <span>{chapterData?.number}</span>
               <Link
-                to={`/bible/book/${book?.abbrev?.pt}/chapter/${chapterData?.chapter}/verse/${chapterData?.number}`}
+                to={`/biblia/livro/${book?.abbrev?.pt}/capitulo/${chapterData?.chapter}/versiculo/${chapterData?.number}`}
                 style={versePage ? {pointerEvents: "none"} : {}}
               >
                 <p>{chapterData?.text}</p>
@@ -75,7 +75,7 @@ export function Verse({ chapterData, versePage }) {
               <VerseWrapper key={verse?.number}>
                 <span>{verse?.number}</span>
                 <Link
-                  to={`/bible/book/${book?.abbrev?.pt}/chapter/${chapterData?.chapter?.number}/verse/${verse?.number}`}
+                  to={`/biblia/livro/${book?.abbrev?.pt}/capitulo/${chapterData?.chapter?.number}/versiculo/${verse?.number}`}
                 >
                   <p>{verse?.text}</p>
                 </Link>

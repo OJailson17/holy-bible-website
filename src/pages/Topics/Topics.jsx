@@ -38,7 +38,7 @@ export function Topics() {
   const handleClick = (topic) => {
     setVerseTopic(topic)
 
-    history.push("/topics/verse")
+    history.push("/versiculosparavida/versiculo")
   }
   return (
     <>

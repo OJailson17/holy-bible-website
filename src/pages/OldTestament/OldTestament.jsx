@@ -16,7 +16,7 @@ export function OldTestament() {
 
 const handleClick = (e) => {
   setBook(e.target.dataset.abbrev)
-  history.push(`/bible`)
+  history.push(`/biblia`)
   window.scrollTo(0, 0);
 }
 

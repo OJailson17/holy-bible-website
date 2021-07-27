@@ -16,14 +16,14 @@ function App() {
     <div className="App">
     <Switch>
     <Route exact path="/" component={Home}/>
-    <Route exact path="/bible" component={BiblePage} />
-    <Route exact path="/bible/book/:book/chapter/:chapterNum/verse/:verseNum/" component={VersePage} />
-    <Route exact path="/wordofday" component={WordOfDay} />
-    <Route exact path="/topics" component={Topics} />
-    <Route exact path="/topics/verse" component={VerseTopic} />
-    <Route exact path="/newtestament" component={NewTestament} />
-    <Route exact path="/oldtestament" component={OldTestament} />
-    <Route exact path="/favorites" component={FavoriteVerse} />
+    <Route exact path="/biblia" component={BiblePage} />
+    <Route exact path="/biblia/livro/:book/capitulo/:chapterNum/versiculo/:verseNum/" component={VersePage} />
+    <Route exact path="/palavradodia" component={WordOfDay} />
+    <Route exact path="/versiculosparavida" component={Topics} />
+    <Route exact path="/versiculosparavida/versiculo" component={VerseTopic} />
+    <Route exact path="/novotestamento" component={NewTestament} />
+    <Route exact path="/velhotestamento" component={OldTestament} />
+    <Route exact path="/favoritos" component={FavoriteVerse} />
     </Switch>
     </div>
     </Router>

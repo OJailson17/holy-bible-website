@@ -33,22 +33,22 @@ export function Navigation({ primary }) {
     <>
       <LinkList hidden={width < 1024 ? "hidden" : ""} primary={primary}>
         <li>
-          <Link to="/wordofday">Palavra do dia</Link>
+          <Link to="/palavradodia">Palavra do dia</Link>
         </li>
         <li>
-          <Link to="/bible">Bíblia completa</Link>
+          <Link to="/biblia">Bíblia completa</Link>
         </li>
         <li>
-          <Link to="/oldtestament">Velho Testamento</Link>
+          <Link to="/velhotestamento">Velho Testamento</Link>
         </li>
         <li>
-          <Link to="/newtestament">Novo Testamento</Link>
+          <Link to="/novotestamento">Novo Testamento</Link>
         </li>
         <li>
-          <Link to="/favorites">Versículos Favoritos</Link>
+          <Link to="/favoritos">Versículos Favoritos</Link>
         </li>
         <li>
-          <Link to="/topics">Versículos para vida</Link>
+          <Link to="/versiculosparavida">Versículos para vida</Link>
         </li>
       </LinkList>
     </>

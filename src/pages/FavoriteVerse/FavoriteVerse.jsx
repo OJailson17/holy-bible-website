@@ -112,7 +112,7 @@ export function FavoriteVerse() {
     setBook(bookValue);
     setChapter(chapterValue);
     history.push(
-      `/bible/book/${bookValue}/chapter/${chapterValue}/verse/${verseValue}/`
+      `/biblia/livro/${bookValue}/capitulo/${chapterValue}/versiculo/${verseValue}/`
     );
   };
 
@@ -144,7 +144,7 @@ export function FavoriteVerse() {
 
         <FavoriteBtn>
           <button>
-            <Link to="/bible">
+            <Link to="/biblia">
               <i className="fas fa-plus-circle"></i>
               <span>Adicionar Favorito</span>
             </Link>

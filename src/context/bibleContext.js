@@ -1,178 +1,185 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useEffect, useState } from "react";
-import { checkFavoriteList } from "../components/helper/checkFavoriteList";
+import { createContext, useEffect, useState } from 'react';
+import { checkFavoriteList } from '../components/helper/checkFavoriteList';
 
 export const BibleContextProvider = createContext();
 
 export const BibleContext = ({ children }) => {
-  const [books, setBooks] = useState([]);
-  const [chapter, setChapter] = useState("");
-  const [chapterData, setChapterData] = useState({});
-  const [qtdChapter, setQtdChapter] = useState("");
-  const [book, setBook] = useState("");
-  const [verse, setVerse] = useState({});
-  const [verseNum, setVerseNum] = useState("");
-  const [qtdverse, setQtdVerse] = useState("");
-  const [newTestament, setNewTestament] = useState([]);
-  const [oldTestament, setOldTestament] = useState([]);
-  const [isFavorite, setIsFavorite] = useState(false)
-  const [verseObj, setVerseObj] = useState({});
-  const [verseTopic, setVerseTopic] = useState({})
+	const [books, setBooks] = useState([]);
+	const [chapter, setChapter] = useState('');
+	const [chapterData, setChapterData] = useState({});
+	const [qtdChapter, setQtdChapter] = useState('');
+	const [book, setBook] = useState('');
+	const [verse, setVerse] = useState({});
+	const [verseNum, setVerseNum] = useState('');
+	const [qtdverse, setQtdVerse] = useState('');
+	const [newTestament, setNewTestament] = useState([]);
+	const [oldTestament, setOldTestament] = useState([]);
+	const [isFavorite, setIsFavorite] = useState(false);
+	const [verseObj, setVerseObj] = useState({});
+	const [verseTopic, setVerseTopic] = useState({});
 
+	console.log({ verseNum, chapter });
 
-  // Get books data
-  const getBooks = async () => {
-    try {
-      const response = await fetch(
-        "https://www.abibliadigital.com.br/api/books",
-        {
-          headers: {
-            Authorization: process.env.REACT_APP_API_TOKEN,
-          },
-        }
-      );
-      const books = await response.json();
-      setBooks(books);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+	// Get books data
+	const getBooks = async () => {
+		try {
+			const response = await fetch(
+				'https://www.abibliadigital.com.br/api/books',
+				{
+					headers: {
+						Authorization: process.env.REACT_APP_API_TOKEN,
+					},
+				},
+			);
+			const books = await response.json();
+			setBooks(books);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
-  const getBook = async () => {
-    try {
-      const response = await fetch(
-        `https://www.abibliadigital.com.br/api/books/${book}`,
-        {
-          headers: {
-            Authorization: process.env.REACT_APP_API_TOKEN,
-          },
-        }
-      );
+	const getBook = async () => {
+		try {
+			const response = await fetch(
+				`https://www.abibliadigital.com.br/api/books/${book}`,
+				{
+					headers: {
+						Authorization: process.env.REACT_APP_API_TOKEN,
+					},
+				},
+			);
 
-      const bookData = await response.json();
-      setQtdChapter(bookData?.chapters);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+			const bookData = await response.json();
 
-  const getChapterData = async () => {
-    try {
-      const response = await fetch(
-        `https://www.abibliadigital.com.br/api/verses/acf/${book}/${chapter}`,
-        {
-          headers: {
-            Authorization: process.env.REACT_APP_API_TOKEN,
-          },
-        }
-      );
-      const chapterData = await response.json();
-      setChapterData(chapterData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+			console.log(bookData.chapters);
+			if (bookData?.chapters < chapter) {
+				setChapter(1);
+			}
 
-  const getVerse = async () => {
-    try {
-      const response = await fetch(
-        `https://www.abibliadigital.com.br/api/verses/acf/${book}/${chapter}/${verseNum}`,
-        {
-          headers: {
-            Authorization: process.env.REACT_APP_API_TOKEN,
-          },
-        }
-      );
-      const verseData = await response.json();
-      setVerse(verseData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+			setQtdChapter(bookData?.chapters);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
-  const getTestaments = () => {
-    const newTestamentBooks = books.filter((book) => book.testament === "NT");
-    const oldTestamentBooks = books.filter((book) => book.testament === "VT");
+	const getChapterData = async () => {
+		try {
+			const response = await fetch(
+				`https://www.abibliadigital.com.br/api/verses/acf/${book}/${chapter}`,
+				{
+					headers: {
+						Authorization: process.env.REACT_APP_API_TOKEN,
+					},
+				},
+			);
+			const chapterData = await response.json();
+			setChapterData(chapterData);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
-    setNewTestament(newTestamentBooks);
-    setOldTestament(oldTestamentBooks);
-  };
+	const getVerse = async () => {
+		try {
+			const response = await fetch(
+				`https://www.abibliadigital.com.br/api/verses/acf/${book}/${chapter}/${verseNum}`,
+				{
+					headers: {
+						Authorization: process.env.REACT_APP_API_TOKEN,
+					},
+				},
+			);
+			const verseData = await response.json();
+			setVerse(verseData);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
-  useEffect(() => {
-    getBooks();
-    setBook("gn");
-    setChapter(1);
-  }, []);
+	const getTestaments = () => {
+		const newTestamentBooks = books.filter(book => book.testament === 'NT');
+		const oldTestamentBooks = books.filter(book => book.testament === 'VT');
 
-  useEffect(() => {
-    getChapterData();
-  }, [chapter]);
+		setNewTestament(newTestamentBooks);
+		setOldTestament(oldTestamentBooks);
+	};
 
-  useEffect(() => {
-    getBook();
-    setChapter(1);
-    getChapterData();
-  }, [book]);
+	useEffect(() => {
+		getBooks();
+		setBook('gn');
+		setChapter(1);
+	}, []);
 
-  useEffect(() => {
-    getTestaments();
-  }, [books]);
+	useEffect(() => {
+		getChapterData();
+	}, [chapter]);
 
-  useEffect(() => {
-    getVerse();
-  }, [verseNum]);
-  
-  useEffect(() => {
-    const obj = {
-      abbrev: book,
-      name: verse?.book?.name,
-      chapter: Number(chapter),
-      verse: Number(verseNum),
-    }
-    
-    if(obj.name !== undefined) {
-      setVerseObj(obj)
-    }
-  }, [verse || verseNum])
+	useEffect(() => {
+		getBook();
+		if (chapter === '') {
+			setChapter(1);
+		}
+		getChapterData();
+	}, [book]);
 
+	useEffect(() => {
+		getTestaments();
+	}, [books]);
 
-  useEffect(() => {
-  if(checkFavoriteList(verseObj)) {
-    setIsFavorite(true)
-  } else {
-    setIsFavorite(false)
-  }
-  }, [verseObj])
+	useEffect(() => {
+		getVerse();
+	}, [verseNum]);
 
+	useEffect(() => {
+		const obj = {
+			abbrev: book,
+			name: verse?.book?.name,
+			chapter: Number(chapter),
+			verse: Number(verseNum),
+		};
 
-  return (
-    <BibleContextProvider.Provider
-      value={{
-        books,
-        setBooks,
-        book,
-        chapter,
-        setChapter,
-        setBook,
-        qtdChapter,
-        chapterData,
-        newTestament,
-        oldTestament,
-        setQtdVerse,
-        qtdverse,
-        verse,
-        setVerse,
-        verseNum,
-        setVerseNum,
-        isFavorite,
-        setIsFavorite,
-        verseObj,
-        setVerseObj,
-        verseTopic,
-        setVerseTopic,
-      }}
-    >
-      {children}
-    </BibleContextProvider.Provider>
-  );
+		if (obj.name !== undefined) {
+			setVerseObj(obj);
+		}
+	}, [verse || verseNum]);
+
+	useEffect(() => {
+		if (checkFavoriteList(verseObj)) {
+			setIsFavorite(true);
+		} else {
+			setIsFavorite(false);
+		}
+	}, [verseObj]);
+
+	return (
+		<BibleContextProvider.Provider
+			value={{
+				books,
+				setBooks,
+				book,
+				chapter,
+				setChapter,
+				setBook,
+				qtdChapter,
+				chapterData,
+				newTestament,
+				oldTestament,
+				setQtdVerse,
+				qtdverse,
+				verse,
+				setVerse,
+				verseNum,
+				setVerseNum,
+				isFavorite,
+				setIsFavorite,
+				verseObj,
+				setVerseObj,
+				verseTopic,
+				setVerseTopic,
+			}}
+		>
+			{children}
+		</BibleContextProvider.Provider>
+	);
 };

@@ -19,8 +19,6 @@ export const BibleContext = ({ children }) => {
 	const [verseObj, setVerseObj] = useState({});
 	const [verseTopic, setVerseTopic] = useState({});
 
-	console.log({ verseNum, chapter });
-
 	// Get books data
 	const getBooks = async () => {
 		try {
@@ -52,7 +50,6 @@ export const BibleContext = ({ children }) => {
 
 			const bookData = await response.json();
 
-			console.log(bookData.chapters);
 			if (bookData?.chapters < chapter) {
 				setChapter(1);
 			}

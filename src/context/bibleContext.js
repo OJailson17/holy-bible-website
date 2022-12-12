@@ -12,7 +12,7 @@ export const BibleContext = ({ children }) => {
 	const [book, setBook] = useState('');
 	const [verse, setVerse] = useState({});
 	const [verseNum, setVerseNum] = useState('');
-	const [qtdverse, setQtdVerse] = useState('');
+	const [qtdVerse, setQtdVerse] = useState('');
 	const [newTestament, setNewTestament] = useState([]);
 	const [oldTestament, setOldTestament] = useState([]);
 	const [isFavorite, setIsFavorite] = useState(false);
@@ -163,7 +163,7 @@ export const BibleContext = ({ children }) => {
 				newTestament,
 				oldTestament,
 				setQtdVerse,
-				qtdverse,
+				qtdVerse,
 				verse,
 				setVerse,
 				verseNum,

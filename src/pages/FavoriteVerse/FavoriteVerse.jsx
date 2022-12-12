@@ -88,7 +88,7 @@ export function FavoriteVerse() {
 	const { setBook, setChapter } = useContext(BibleContextProvider);
 	const history = useHistory();
 
-	const getfavoriteList = () => {
+	const getFavoriteList = () => {
 		const favoriteList = JSON.parse(localStorage.getItem('favorites')) || [];
 		setFavorites(favoriteList);
 	};
@@ -124,11 +124,11 @@ export function FavoriteVerse() {
 		};
 
 		removeFavorite(obj);
-		getfavoriteList();
+		getFavoriteList();
 	};
 
 	useEffect(() => {
-		getfavoriteList();
+		getFavoriteList();
 	}, []);
 
 	return (
